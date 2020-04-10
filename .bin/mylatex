@@ -1,0 +1,22 @@
+#!/bin/bash
+
+filename="main"
+foldername="Output"
+mkdir -p $foldername
+texfot pdflatex -aux-directory=$foldername -output-directory=$foldername $filename
+
+while getopts :bai opt; do
+  case $opt in
+    b) biber --input-directory=$foldername --output-directory=$foldername $filename
+       texfot pdflatex -aux-directory=$foldername -output-directory=$foldername $filename
+      ;;
+    a) makeglossaries -d $foldername $filename
+       texfot pdflatex -aux-directory=$foldername -output-directory=$foldername $filename
+       texfot pdflatex -aux-directory=$foldername -output-directory=$foldername $filename
+      ;;
+    i) makeindex $foldername/$filename
+       texfot pdflatex -aux-directory=$foldername -output-directory=$foldername $filename
+       ;;
+      ?) echo "I don't know what $OPTARG is!"
+  esac
+done

@@ -1,0 +1,5 @@
+(define (save_as_jpg source_filename destination_filename)
+   (let* ((image (car (gimp-file-load RUN-NONINTERACTIVE source_filename source_filename)))
+          (drawable (car (gimp-image-merge-visible-layers image 0))))     
+     (file-jpeg-save 1 image drawable destination_filename destination_filename 1 0 1 1 "0" 2 1 0 0) 
+     (gimp-image-delete image))) 

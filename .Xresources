@@ -1,0 +1,77 @@
+! Use a nice truetype font and size by default... 
+xterm*faceName: DejaVu Sans Mono Book
+xterm*faceSize: 15
+
+! Every shell is a login shell by default (for inclusion of all necessary environment variables)
+xterm*loginshell: true
+
+! Scrollback...
+xterm*savelines: 1000
+
+! double-click to select whole URLs
+xterm*charClass: 33:48,36-47:48,58-59:48,61:48,63-64:48,95:48,126:48
+
+! Colours
+
+*.foreground:   #f3f4f5 
+*.background:   #16181d 
+*.cursorColor:  #f3f4f5 
+
+! black
+*.color0:       #1d1f21
+*.color8:       #969896
+
+! red
+*.color1:       #e64e45 
+*.color9:       #e64e45 
+
+! green
+*.color2:       #33a25e 
+*.color10:      #33a25e 
+
+! yellow
+*.color3:       #ffc33c 
+*.color11:      #ffc33c 
+
+! blue
+*.color4:       #538bff 
+*.color12:      #538bff 
+
+! magenta
+*.color5:       #bd84e1 
+*.color13:      #bd84e1 
+
+! cyan
+*.color6:       #538bff 
+*.color14:      #538bff 
+
+! white
+*.color7:       #c5c8c6
+*.color15:      #ffffff
+
+! right hand side scrollbar...
+xterm*rightScrollBar: true
+xterm*ScrollBar: true
+
+! stop output to terminal from jumping down to bottom of scroll again
+xterm*scrollTtyOutput: false
+
+! Use CTRL+Shift+C and CTRL+Shift+V for copy and paste
+xterm*VT100.Translations: #override \
+                 Ctrl Shift <Key>V:    insert-selection(CLIPBOARD) \n\
+                 Ctrl Shift <Key>C:    copy-selection(CLIPBOARD)
+
+! rofi colours
+rofi.color-window: argb:dd16181d, #f3f4f5, #f3f4f5 
+rofi.color-normal: argb:dd2f343f, #f3f4f5, argb:dd2f343f, #16181d, #f3f4f5 
+rofi.color-urgent: argb:2c1d1f21, #cc6666, argb:e54b5160, #a54242, #f9f9f9
+rofi.color-active: argb:2c1d1f21, #65acff, argb:e44b5160, #4491ed, #f9f9f9
+rofi.width: 100
+rofi.lines: 5
+rofi.columns: 1
+rofi.font: System San Francisco Display 25
+rofi.bw: 0
+rofi.padding: 500
+rofi.eh: 1
+rofi.separator-style: solid
+rofi.hide-scrollbar: true

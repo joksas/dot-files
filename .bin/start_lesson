@@ -1,0 +1,17 @@
+#! /bin/bash
+
+cp -rf "/home/dovydas/Documents/Tutoring/Template/Screen Sharing" .
+
+pdfseparate *.pdf "Screen Sharing/N%02d.pdf"
+
+cd "Screen Sharing"
+
+for pdf_file in *.pdf; do
+    jpg_file="${pdf_file%.*}.jpg"
+    xcf_file="${pdf_file%.*}.xcf"
+    convert -colorspace RGB -density 500 $pdf_file -flatten $jpg_file
+    gimp -i -d -b "(save_as_xcf \"$jpg_file\" \"$xcf_file\")" -b "(gimp-quit 0)" 
+done
+
+rm *.jpg
+rm *.pdf
