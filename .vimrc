@@ -40,7 +40,7 @@ set iskeyword+=:
 
 let b:suppress_latex_suite = 1
 
-" CTRL+X, CTRL+C and CTRL+V bindings:
+" Alt+X, Alt+C and Alt+V bindings:
 vnoremap <A-x> "+d
 vnoremap <A-c> "+y
 map <A-v> "+P
