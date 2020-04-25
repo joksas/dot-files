@@ -20,3 +20,7 @@ while getopts :bai opt; do
       ?) echo "I don't know what $OPTARG is!"
   esac
 done
+
+cd Output
+new_name=$(basename "${PWD%/*}.pdf")
+mv main.pdf "$new_name"
