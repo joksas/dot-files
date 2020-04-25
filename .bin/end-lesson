@@ -7,8 +7,8 @@ for xcf_file in *.xcf; do
     gimp -i -d -b "(save_as_jpg \"$xcf_file\" \"$jpg_file\")" -b "(gimp-quit 0)" 
 done
 file_name=$(basename "${PWD%/*}")
-file_name="${file_name//[ ,-]/_}"
+file_name="${file_name// /-}"
 file_name="${file_name//___/_}"
-file_name=$file_name"___Lesson_Summary"
+file_name=$file_name"---Lesson-Summary"
 convert JPG/*.jpg "../$file_name".pdf
 rm -R JPG
