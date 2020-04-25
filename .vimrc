@@ -30,8 +30,7 @@ filetype indent on
 " The following changes the default filetype back to 'tex':
 let g:tex_flavor='latex'
 
-" this is mostly a matter of taste. but LaTeX looks good with just a bit
-" of indentation.
+" identation
 set sw=2
 " TIP: if you write your \label's as \label{fig:something}, then if you
 " type in \ref{fig: and press <C-n> you will automatically cycle through
@@ -59,44 +58,20 @@ map <F1> :setlocal spell! spelllang=en_gb<CR>
 " - Avoid using standard Vim directory names like 'plugin'
 call plug#begin('~/.vim/plugged')
 
-" Make sure you use single quotes
-
-" Shorthand notation; fetches https://github.com/junegunn/vim-easy-align
+" Easy align https://github.com/junegunn/vim-easy-align
+" Try gaip=, where = is symbol around which one want to align
+" = can be preceded with the following:
+" = Around the 1st occurrences
+" 2= Around the 2nd occurrences
+" *= Around all occurrences
+" **= Left/Right alternating alignment around all occurrences
+" <Enter> Switching between left/right/center alignment modes
 Plug 'junegunn/vim-easy-align'
-
-" Any valid git URL is allowed
-Plug 'https://github.com/junegunn/vim-github-dashboard.git'
-
-" Multiple Plug commands can be written in a single line using | separators
-Plug 'SirVer/ultisnips' | Plug 'honza/vim-snippets'
-
-" On-demand loading
-Plug 'scrooloose/nerdtree', { 'on':  'NERDTreeToggle' }
-Plug 'tpope/vim-fireplace', { 'for': 'clojure' }
-
-" Using a non-master branch
-Plug 'rdnetto/YCM-Generator', { 'branch': 'stable' }
-
-" Using a tagged release; wildcard allowed (requires git 1.9.2 or above)
-Plug 'fatih/vim-go', { 'tag': '*' }
-
-" A Vim Plugin for Lively Previewing LaTeX PDF Output
-Plug 'xuhdev/vim-latex-live-preview', { 'for': 'tex' }
-
-" Plugin options
-Plug 'nsf/gocode', { 'tag': 'v.20150303', 'rtp': 'vim' }
-
-" Plugin outside ~/.vim/plugged with post-update hook
-Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
-
-" Unmanaged plugin (manually installed and updated)
-Plug '~/my-prototype-plugin'
+xmap ga <Plug>(EasyAlign)
+nmap ga <Plug>(EasyAlign)
 
 " Vimtex
 Plug 'lervag/vimtex'
-
-" Fuzzy search
-Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
 
 " R markdown
 Plug 'vim-pandoc/vim-pandoc'
