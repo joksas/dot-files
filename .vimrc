@@ -25,9 +25,6 @@ set shellslash
 " OPTIONAL: This enables automatic indentation as you type.
 filetype indent on
 
-" OPTIONAL: Starting with Vim 7, the filetype of empty .tex files defaults to
-" 'plaintex' instead of 'tex', which results in vim-latex not being loaded.
-" The following changes the default filetype back to 'tex':
 let g:tex_flavor='latex'
 
 " identation
@@ -54,8 +51,6 @@ map <F1> :setlocal spell! spelllang=en_gb<CR>
 :noremap <A-0> g0
 
 " Specify a directory for plugins
-" - For Neovim: stdpath('data') . '/plugged'
-" - Avoid using standard Vim directory names like 'plugin'
 call plug#begin('~/.vim/plugged')
 
 " Easy align https://github.com/junegunn/vim-easy-align
