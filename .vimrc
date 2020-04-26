@@ -61,6 +61,7 @@ call plug#begin('~/.vim/plugged')
 " *= Around all occurrences
 " **= Left/Right alternating alignment around all occurrences
 " <Enter> Switching between left/right/center alignment modes
+" Additionally, :'<,'>EasyAlign&mrl*l1r1 can be used inside LaTeX tables 
 Plug 'junegunn/vim-easy-align'
 xmap ga <Plug>(EasyAlign)
 nmap ga <Plug>(EasyAlign)
@@ -76,7 +77,6 @@ Plug 'vim-pandoc/vim-pandoc'
 Plug 'vim-pandoc/vim-pandoc-syntax' 
 Plug 'vim-pandoc/vim-rmarkdown'
 
-" Initialize plugin system
 call plug#end()
 
 set nofoldenable " disable folding
