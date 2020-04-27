@@ -38,12 +38,12 @@ xterm*charClass: 33:48,36-47:48,58-59:48,61:48,63-64:48,95:48,126:48
 *.color12:      #208ffb 
 
 ! magenta
-*.color5:       #9b64fb 
-*.color13:      #9b64fb 
+*.color5:       #c56cf0 
+*.color13:      #c56cf0 
 
 ! cyan
-*.color6:       #808080 
-*.color14:      #808080 
+*.color6:       #666666 
+*.color14:      #666666 
 
 ! white
 *.color7:       #ffffff 
@@ -62,8 +62,8 @@ xterm*VT100.Translations: #override \
                  Ctrl Shift <Key>C:    copy-selection(CLIPBOARD)
 
 ! rofi colours
-rofi.color-window: argb:dd16181d, #f3f4f5, #f3f4f5 
-rofi.color-normal: argb:dd2f343f, #f3f4f5, argb:dd2f343f, #16181d, #f3f4f5 
+rofi.color-window: argb:dd000000, #ffffff, #ffffff 
+rofi.color-normal: argb:dd101010, #ffffff, argb:dd101010, #000000, #ffffff 
 rofi.color-urgent: argb:2c1d1f21, #cc6666, argb:e54b5160, #a54242, #f9f9f9
 rofi.color-active: argb:2c1d1f21, #65acff, argb:e44b5160, #4491ed, #f9f9f9
 rofi.width: 100

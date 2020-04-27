@@ -30,7 +30,7 @@ set $bg-color 	         #101010
 set $bg-color-darker     #000000 
 set $inactive-bg-color   #101010 
 set $text-color          #ffffff 
-set $inactive-text-color #808080 
+set $inactive-text-color #666666 
 set $urgent-bg-color     #e84f4f 
 
 
