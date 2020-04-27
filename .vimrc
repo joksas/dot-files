@@ -41,7 +41,10 @@ vnoremap <A-x> "+d
 vnoremap <A-c> "+y
 map <A-v> "+P
 
-" Enable spell-check with F1
+" Enable spell-check by default
+setlocal spell! spelllang=en_gb
+
+" Toggle spell-check with F1
 map <F1> :setlocal spell! spelllang=en_gb<CR>
 
 " Remap keys for moving in visual lines
