@@ -13,40 +13,40 @@ xterm*charClass: 33:48,36-47:48,58-59:48,61:48,63-64:48,95:48,126:48
 
 ! Colours
 
-*.foreground:   #f3f4f5 
-*.background:   #16181d 
-*.cursorColor:  #f3f4f5 
+*.foreground:   #ffffff 
+*.background:   #101010 
+*.cursorColor:  #ffffff 
 
 ! black
-*.color0:       #1d1f21
-*.color8:       #969896
+*.color0:       #101010 
+*.color8:       #101010 
 
 ! red
-*.color1:       #e64e45 
-*.color9:       #e64e45 
+*.color1:       #e84f4f 
+*.color9:       #e84f4f 
 
 ! green
-*.color2:       #33a25e 
-*.color10:      #33a25e 
+*.color2:       #66bb6a 
+*.color10:      #66bb6a 
 
 ! yellow
-*.color3:       #ffc33c 
-*.color11:      #ffc33c 
+*.color3:       #f39d21 
+*.color11:      #f39d21 
 
 ! blue
-*.color4:       #538bff 
-*.color12:      #538bff 
+*.color4:       #208ffb 
+*.color12:      #208ffb 
 
 ! magenta
-*.color5:       #bd84e1 
-*.color13:      #bd84e1 
+*.color5:       #9b64fb 
+*.color13:      #9b64fb 
 
 ! cyan
-*.color6:       #538bff 
-*.color14:      #538bff 
+*.color6:       #00a4c1 
+*.color14:      #00a4c1 
 
 ! white
-*.color7:       #c5c8c6
+*.color7:       #ffffff 
 *.color15:      #ffffff
 
 ! right hand side scrollbar...
