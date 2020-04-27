@@ -89,7 +89,7 @@ autocmd bufreadpre *.md setlocal ft=tex
 autocmd bufreadpre *.rmd setlocal ft=tex 
 
 " Change MatchParen colours
-hi MatchParen cterm=none ctermbg=magenta ctermfg=yellow
+hi MatchParen cterm=none ctermbg=cyan ctermfg=yellow
 
 " Change location of vimtex build
 let g:vimtex_compiler_latexmk = {
