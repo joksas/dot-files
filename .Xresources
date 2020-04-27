@@ -18,35 +18,35 @@ xterm*charClass: 33:48,36-47:48,58-59:48,61:48,63-64:48,95:48,126:48
 *.cursorColor:  #ffffff 
 
 ! black
-*.color0:       #101010 
+*.color0:       #000000 
 *.color8:       #101010 
 
 ! red
-*.color1:       #e84f4f 
+*.color1:       #e22222 
 *.color9:       #e84f4f 
 
 ! green
-*.color2:       #66bb6a 
+*.color2:       #4aa54f 
 *.color10:      #66bb6a 
 
 ! yellow
 *.color3:       #f39d21 
-*.color11:      #f39d21 
+*.color11:      #f6b151 
 
 ! blue
-*.color4:       #208ffb 
+*.color4:       #0573e1 
 *.color12:      #208ffb 
 
 ! magenta
-*.color5:       #c56cf0 
+*.color5:       #b13deb 
 *.color13:      #c56cf0 
 
 ! cyan
-*.color6:       #666666 
+*.color6:       #4d4d4d 
 *.color14:      #666666 
 
 ! white
-*.color7:       #ffffff 
+*.color7:       #4d4d4d 
 *.color15:      #ffffff
 
 ! right hand side scrollbar...
