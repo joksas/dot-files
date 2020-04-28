@@ -229,6 +229,10 @@ bindsym $mod+r mode "resize"
 # lock
 bindsym $mod+Shift+x exec i3lock-fancy-dualmonitor
 
+# mount/unmount USB
+bindsym $mod+u exec udiskie-mount /dev/sdb && cd /media/dovydas && xterm ranger
+bindsym $mod+Shift+u exec udiskie-umount /dev/sdb && notify-send -t 3000 "/dev/sdb unmounted"
+
 # Pulse Audio controls
 bindsym XF86AudioRaiseVolume exec amixer -q -D pulse sset Master 5%+ && pkill -RTMIN+1 i3blocks
 bindsym XF86AudioLowerVolume exec amixer -q -D pulse sset Master 5%- && pkill -RTMIN+1 i3blocks
@@ -263,7 +267,7 @@ bindsym XF86AudioPrev exec playerctl previous
 exec xrandr --output VGA-1 --primary --mode 1920x1080 --pos 0x0 --rotate normal --output LVDS-1 --mode 1366x768 --pos 1920x152 --rotate normal 
 
 # set desktop background
-exec_always feh --bg-fill ~/Pictures/Wallpapers/mountains.jpg 
+exec_always feh --bg-fill ~/Pictures/Wallpapers/space.jpg 
 
 # update terminal output
 exec_always "xrdb ~/.Xresources"
