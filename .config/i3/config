@@ -164,6 +164,7 @@ for_window [class="okular"] move container to workspace $WS8, workspace $WS8, fo
 for_window [class="Spotify"] move container to workspace $WS9, workspace $WS9, focus
 for_window [class="zoom"] move container to workspace $WS10, workspace $WS10, focus, layout stacked
 for_window [class="Skype"] move container to workspace $WS10, workspace $WS10, focus, layout stacked
+for_window [class="Microsoft Teams - Preview"] move container to workspace $WS10, workspace $WS10, focus, layout stacked
 for_window [class="WxWabbitemu"] floating enable
 
 # reload the configuration file
@@ -267,7 +268,7 @@ bindsym XF86AudioPrev exec playerctl previous
 exec xrandr --output VGA-1 --primary --mode 1920x1080 --pos 0x0 --rotate normal --output LVDS-1 --mode 1366x768 --pos 1920x152 --rotate normal 
 
 # set desktop background
-exec_always feh --bg-fill ~/Pictures/Wallpapers/space.jpg 
+exec_always feh --bg-fill ~/Pictures/Wallpapers/the-garden-of-palazzo-contarini-dal-zaffo.jpg
 
 # update terminal output
 exec_always "xrdb ~/.Xresources"
