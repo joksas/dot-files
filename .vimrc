@@ -12,6 +12,9 @@ set laststatus=2
 set ruler
 set number relativenumber
 
+" Indent text on the same logical line
+set breakindent
+
 " Enable auto-complete
 set wildmode=longest,list,full
 
