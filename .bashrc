@@ -120,14 +120,12 @@ fi
 VISUAL=vim; export VISUAL EDITOR=vim; export EDITOR
 
 # add path
-export PATH=$PATH":$HOME/.bin"
+export PATH=$PATH":$HOME/.bin:$HOME/bin"
 
 [ -f ~/.fzf.bash ] && source ~/.fzf.bash
 
 # use vim mode in bash
 set -o vi
-
-export PATH="$HOME/bin:$PATH"
 
 # Turn off system beep in console:
 xset b off
