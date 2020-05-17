@@ -17,7 +17,7 @@ while getopts :bai opt; do
     i) makeindex $foldername/$filename
        texfot pdflatex -aux-directory=$foldername -output-directory=$foldername $filename
        ;;
-      ?) echo "I don't know what $OPTARG is!"
+    ?) echo "I don't know what $OPTARG is!"
   esac
 done
 
