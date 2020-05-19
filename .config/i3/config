@@ -31,8 +31,12 @@ set $bg-color-darker     #000000
 set $inactive-bg-color   #101010 
 set $text-color          #ffffff 
 set $inactive-text-color #666666 
-set $urgent-bg-color     #e84f4f 
+set $urgent-bg-color     #e84f4f
 
+# Monitor names
+
+set $laptop-monitor   LVDS1
+set $external-monitor DP1
 
 # Use Mouse+$mod to drag floating windows to their wanted position
 floating_modifier $mod
@@ -59,9 +63,9 @@ bindsym $mod+k focus up
 bindsym $mod+l focus right
 
 # alternatively, you can use the cursor keys:
-bindsym $mod+Left focus left
-bindsym $mod+Down focus down
-bindsym $mod+Up focus up
+bindsym $mod+Left  focus left
+bindsym $mod+Down  focus down
+bindsym $mod+Up    focus up
 bindsym $mod+Right focus right
 
 # move focused window
@@ -71,9 +75,9 @@ bindsym $mod+Shift+k move up
 bindsym $mod+Shift+l move right
 
 # alternatively, you can use the cursor keys:
-bindsym $mod+Shift+Left move left
-bindsym $mod+Shift+Down move down
-bindsym $mod+Shift+Up move up
+bindsym $mod+Shift+Left  move left
+bindsym $mod+Shift+Down  move down
+bindsym $mod+Shift+Up    move up
 bindsym $mod+Shift+Right move right
 
 # split in horizontal orientation
@@ -128,28 +132,28 @@ bindsym $mod+9 workspace $ws9
 bindsym $mod+0 workspace $ws10
 
 # assign workspaces to monitors
-workspace $ws1 output VGA-1
-workspace $ws2 output VGA-1
-workspace $ws3 output VGA-1
-workspace $ws4 output VGA-1
-workspace $ws5 output VGA-1
-workspace $ws6 output VGA-1 
-workspace $ws7 output LVDS-1 
-workspace $ws8 output LVDS-1 
-workspace $ws9 output LVDS-1 
-workspace $ws10 output LVDS-1 
+workspace $ws1  output $external-monitor
+workspace $ws2  output $external-monitor
+workspace $ws3  output $external-monitor
+workspace $ws4  output $external-monitor
+workspace $ws5  output $external-monitor
+workspace $ws6  output $external-monitor
+workspace $ws7  output $laptop-monitor
+workspace $ws8  output $laptop-monitor
+workspace $ws9  output $laptop-monitor
+workspace $ws10 output $laptop-monitor
 
 # move focused container to workspace
-bindsym $mod+Shift+1 move container to workspace $ws1, workspace $ws1
-bindsym $mod+Shift+2 move container to workspace $ws2, workspace $ws2 
-bindsym $mod+Shift+3 move container to workspace $ws3, workspace $ws3 
-bindsym $mod+Shift+4 move container to workspace $ws4, workspace $ws4 
-bindsym $mod+Shift+5 move container to workspace $ws5, workspace $ws5 
-bindsym $mod+Shift+6 move container to workspace $ws6, workspace $ws6 
-bindsym $mod+Shift+7 move container to workspace $ws7, workspace $ws7 
-bindsym $mod+Shift+8 move container to workspace $ws8, workspace $ws8 
-bindsym $mod+Shift+9 move container to workspace $ws9, workspace $ws9 
-bindsym $mod+Shift+0 move container to workspace $ws10, workspace $ws10 
+bindsym $mod+Shift+1 move container to workspace $ws1,  workspace $ws1
+bindsym $mod+Shift+2 move container to workspace $ws2,  workspace $ws2
+bindsym $mod+Shift+3 move container to workspace $ws3,  workspace $ws3
+bindsym $mod+Shift+4 move container to workspace $ws4,  workspace $ws4
+bindsym $mod+Shift+5 move container to workspace $ws5,  workspace $ws5
+bindsym $mod+Shift+6 move container to workspace $ws6,  workspace $ws6
+bindsym $mod+Shift+7 move container to workspace $ws7,  workspace $ws7
+bindsym $mod+Shift+8 move container to workspace $ws8,  workspace $ws8
+bindsym $mod+Shift+9 move container to workspace $ws9,  workspace $ws9
+bindsym $mod+Shift+0 move container to workspace $ws10, workspace $ws10
 
 # assign programs to workspaces
 for_window [class="Firefox-esr"] move container to workspace $WS1, workspace $WS1, focus
@@ -240,11 +244,11 @@ bindsym XF86AudioLowerVolume exec amixer -q -D pulse sset Master 5%- && pkill -R
 bindsym XF86AudioMute exec amixer -q -D pulse sset Master toggle && pkill -RTMIN+1 i3blocks
 
 # Disconnect monitor
-bindsym $mod+Shift+d exec xrandr --output VGA-1 --off
+bindsym $mod+Shift+d exec xrandr --output $external-monitor --off
 
 # Reconnect monitor
-bindsym $mod+Ctrl+d exec xrandr --output VGA-1 --primary --mode 1920x1080 --pos 0x0 --rotate normal --output LVDS-1 --mode 1366x768 --pos 1920x152 --rotate normal 
-
+bindsym $mod+Ctrl+d exec xrandr --output $external-monitor --primary --mode 1920x1080 --pos 0x0 --rotate normal --output $laptop-monitor --mode 1366x768 --pos 1920x128 --rotate normal
+ 
 # Sreen brightness controls
 bindsym XF86MonBrightnessUp exec xbacklight -inc 10 # increase screen brightness
 bindsym XF86MonBrightnessDown exec xbacklight -dec 10 # decrease screen brightness
@@ -265,10 +269,10 @@ bindsym XF86AudioNext exec playerctl next
 bindsym XF86AudioPrev exec playerctl previous
 
 # dual monitor setup
-exec xrandr --output VGA-1 --primary --mode 1920x1080 --pos 0x0 --rotate normal --output LVDS-1 --mode 1366x768 --pos 1920x152 --rotate normal 
+exec xrandr --output $external-monitor --primary --mode 1920x1080 --pos 0x0 --rotate normal --output $laptop-monitor --mode 1366x768 --pos 1920x128 --rotate normal
 
 # set desktop background
-exec_always feh --bg-fill ~/Pictures/Wallpapers/the-garden-of-palazzo-contarini-dal-zaffo.jpg
+exec_always feh --bg-fill ~/Pictures/Wallpapers/forest.jpg
 
 # update terminal output
 exec_always "xrdb ~/.Xresources"
