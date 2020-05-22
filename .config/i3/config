@@ -13,7 +13,7 @@ set $mod Mod4
 
 # Font for window titles. Will also be used by the bar unless a different font
 # is used in the bar {} block below.
-font pango:System San Francisco Display, Font Awesome 14
+font pango:System San Francisco Display, Font Awesome 15
 
 # This font is widely installed, provides lots of unicode glyphs, right-to-left
 # text rendering and scalability on retina/hidpi displays (thanks to pango).
@@ -188,7 +188,7 @@ client.urgent           $urgent-bg-color    $urgent-bg-color   $text-color      
 # bar
 bar {
   	status_command i3blocks -c /home/dovydas/.config/i3/i3blocks.conf
-        font pango:System San Francisco Display, Font Awesome 15
+        font pango:System San Francisco Display, Font Awesome 16
 	colors {
 		background $bg-color
 	        separator  $inactive-text-color
@@ -272,7 +272,7 @@ bindsym XF86AudioPrev exec playerctl previous
 exec xrandr --output $external-monitor --primary --mode 1920x1080 --pos 0x0 --rotate normal --output $laptop-monitor --mode 1366x768 --pos 1920x128 --rotate normal
 
 # set desktop background
-exec_always feh --bg-fill ~/Pictures/Wallpapers/forest.jpg
+exec_always feh --bg-fill ~/Pictures/Wallpapers/green-field.jpg
 
 # update terminal output
 exec_always "xrdb ~/.Xresources"
