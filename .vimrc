@@ -80,6 +80,9 @@ Plug 'vim-pandoc/vim-pandoc'
 Plug 'vim-pandoc/vim-pandoc-syntax' 
 Plug 'vim-pandoc/vim-rmarkdown'
 
+" Python
+Plug 'hdima/python-syntax'
+
 call plug#end()
 
 set nofoldenable " disable folding
