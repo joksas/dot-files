@@ -290,7 +290,7 @@ exec i3 restart
 exec nm-applet
 
 # hide cursor after 1 second
-exec_always "unclutter -idle 1 &"
+exec_always "unclutter -idle 1 -notclass Firefox-esr"
 
 # run syncthing in background
 exec_always "syncthing -no-browser"
