@@ -1,0 +1,8 @@
+#!/bin/sh
+
+# Script for backing up files. Uses script from https://github.com/wolfv6/rclone_jobber. 
+
+source="~/Documents"
+dest="/media/dovydas/Dovydas\ USB"
+
+rclone_jobber "$source" "$dest"
