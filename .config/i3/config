@@ -130,7 +130,7 @@ bindsym $mod+Shift+9 move container to workspace $ws9,  workspace $ws9
 bindsym $mod+Shift+0 move container to workspace $ws10, workspace $ws10
 
 # assign programs to workspaces
-for_window [class="Firefox-esr"] move container to workspace $WS1, workspace $WS1, focus
+for_window [class="Brave-browser"] move container to workspace $WS1, workspace $WS1, focus
 for_window [class="jetbrains-pycharm-ce"] move container to workspace $WS5, workspace $WS5, focus
 for_window [title="dovydas@debian.*"] move container to workspace $WS2, workspace $WS2, focus
 for_window [title="^ranger$"] move container to workspace $WS3, workspace $WS3, focus
@@ -218,8 +218,8 @@ bindsym XF86Favorites exec xbacklight -inc 10 # decrease screen brightness
 bindsym XF86Explorer exec xbacklight -dec 10 # decrease screen brightness
 
 # Launch browser
-bindsym XF86HomePage exec firefox
-bindsym XF86Mail exec firefox https://outlook.office.com/owa/?realm=live.ucl.ac.uk#path=/mail 
+bindsym XF86HomePage exec brave-browser
+bindsym XF86Mail exec brave-browser https://outlook.office.com/owa/?realm=live.ucl.ac.uk#path=/mail 
 
 # Touchpad controls
 bindsym XF86TouchpadToggle exec /some/path/toggletouchpad.sh # toggle touchpad
@@ -249,7 +249,7 @@ exec_always compton
 exec nm-applet
 
 # hide cursor after 1 second
-exec_always "unclutter -idle 1 -notclass Firefox-esr"
+exec_always "unclutter -idle 1 -notclass Brave-browser"
 
 # run syncthing in background
 exec_always "syncthing -no-browser"
