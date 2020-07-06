@@ -10,7 +10,7 @@ total_cases=$(printf "$body" | awk '{print $2}')
 
 case $BLOCK_BUTTON in
   1) notify-send -t 5000 "$header" "$body" ;;
-  3) brave-browser "https://www.worldometers.info/coronavirus" ;;
+  3) sensible-browser "https://www.worldometers.info/coronavirus" ;;
 esac
 
 echo "$total_cases"

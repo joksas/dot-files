@@ -218,8 +218,8 @@ bindsym XF86Favorites exec xbacklight -inc 10 # decrease screen brightness
 bindsym XF86Explorer exec xbacklight -dec 10 # decrease screen brightness
 
 # Launch browser
-bindsym XF86HomePage exec brave-browser
-bindsym XF86Mail exec brave-browser https://outlook.office.com/owa/?realm=live.ucl.ac.uk#path=/mail 
+bindsym XF86HomePage exec sensible-browser 
+bindsym XF86Mail exec sensible-browseR HTTPS://outlook.office.com/owa/?realm=live.ucl.ac.uk#path=/mail 
 
 # Touchpad controls
 bindsym XF86TouchpadToggle exec /some/path/toggletouchpad.sh # toggle touchpad
