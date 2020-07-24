@@ -120,7 +120,7 @@ fi
 VISUAL=vim; export VISUAL EDITOR=vim; export EDITOR
 
 # add path
-export PATH=$PATH":$HOME/.bin:/sbin"
+export PATH=$PATH":$HOME/.bin:/sbin:/home/linuxbrew/.linuxbrew/bin"
 
 [ -f ~/.fzf.bash ] && source ~/.fzf.bash
 
