@@ -1,0 +1,31 @@
+% One-and-a-half spacing for the text, except for figure captions.
+\usepackage[onehalfspacing]{setspace}
+
+% Removes spaces between items in a list and between the list and the text above and below it.
+% https://tex.stackexchange.com/questions/119919/no-spacing-between-enumerated-items-with-usepackageenumerate/198959
+\usepackage{enumitem}
+\setlist[itemize]{nolistsep}
+\setlist[enumerate]{nolistsep}
+
+% For typesetting maths intervals
+\usepackage{interval}
+
+% Enable to-do lists:
+\newlist{todolist}{itemize}{2}
+\setlist[todolist]{label=$\square$}
+\usepackage{pifont}
+\newcommand{\cmark}{\ding{51}}%
+\newcommand{\xmark}{\ding{55}}%
+\newcommand{\done}{\rlap{$\square$}{\raisebox{2pt}{\large\hspace{1pt}\cmark}}%
+\hspace{-2.5pt}}
+\newcommand{\wontfix}{\rlap{$\square$}{\large\hspace{1pt}\xmark}}
+
+% Hyperlinks and their colours:
+\usepackage{hyperref}
+\hypersetup{
+    colorlinks,
+    citecolor=black,
+    filecolor=black,
+    linkcolor=black,
+    urlcolor=blue
+}

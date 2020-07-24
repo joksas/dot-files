@@ -13,6 +13,7 @@
 !/.config/dunst
 !/.config/i3
 !/.config/ranger
+!/.config/markdown-latex
 
 !/.config/GIMP
 /.config/GIMP/*
