@@ -42,10 +42,12 @@ vnoremap <A-c> "+y
 map <A-v> "+P
 
 " Enable spell-check by default
-setlocal spell! spelllang=en_gb
+setlocal spell! spelllang=en_us
 
-" Toggle spell-check with F1
-map <F1> :setlocal spell! spelllang=en_gb<CR>
+" Toggle spell-check
+map <F1> :setlocal spell! spelllang=en_us<CR>
+map <F2> :setlocal spell! spelllang=en_gb<CR>
+map <F3> :setlocal spell! spelllang=lt<CR>
 
 " Remap keys for moving in visual lines
 :noremap <A-j> gj
@@ -110,5 +112,5 @@ highlight Pmenu ctermfg=white guifg=white ctermbg=black guibg=black
 highlight PmenuSel ctermfg=black guifg=black ctermbg=red guibg=red
 
 " Convert markdown files to pdf
-autocmd Filetype markdown map <F5> :!pandoc<space><C-r>%<space>-V<space>geometry:a4paper<space>-V<space>geometry:margin=3cm<space>-V<space>linkcolor:blue<space>-H<space>"/home/dovydas/Documents/Notes/Setup/text-formatting.sty"<space>-o<space><C-r>%<backspace><backspace>pdf<Enter>
-autocmd Filetype rmd map <F5> :!pandoc<space><C-r>%<space>-V<space>geometry:a4paper<space>-V<space>geometry:margin=3cm<space>-V<space>linkcolor:blue<space>-H<space>"/home/dovydas/Documents/Notes/Setup/definitions.sty"<space>-H<space>"/home/dovydas/Documents/Notes/Setup/miscellaneous.sty"<space>-H<space>"/home/dovydas/Documents/Notes/Setup/text-formatting.sty"<space>-o<space><C-r>%<backspace><backspace><backspace>pdf<Enter>
+autocmd Filetype markdown map <F5> :!pandoc<space><C-r>%<space>-V<space>geometry:a4paper<space>-V<space>geometry:margin=3cm<space>-V<space>linkcolor:blue<space>-H<space>"/home/dovydas/.config/markdown-latex/text-formatting.sty"<space>-o<space><C-r>%<backspace><backspace>pdf<Enter>
+autocmd Filetype rmd map <F5> :!pandoc<space><C-r>%<space>-V<space>geometry:a4paper<space>-V<space>geometry:margin=3cm<space>-V<space>linkcolor:blue<space>-H<space>"/home/dovydas/.config/markdown-latex/definitions.sty"<space>-H<space>"/home/dovydas/.config/markdown-latex/miscellaneous.sty"<space>-H<space>"/home/dovydas/.config/markdown-latex/text-formatting.sty"<space>-o<space><C-r>%<backspace><backspace><backspace>pdf<Enter>
