@@ -85,6 +85,9 @@ Plug 'vim-pandoc/vim-rmarkdown'
 " Python
 Plug 'hdima/python-syntax'
 
+" Check grammar
+Plug 'rhysd/vim-grammarous'
+
 call plug#end()
 
 set nofoldenable " disable folding
