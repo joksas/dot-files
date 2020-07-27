@@ -1,5 +1,4 @@
 set autoindent
-set expandtab
 
 set hlsearch
 set ignorecase
