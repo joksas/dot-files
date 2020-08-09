@@ -87,6 +87,9 @@ Plug 'hdima/python-syntax'
 " Check grammar
 Plug 'rhysd/vim-grammarous'
 
+" Go
+Plug 'fatih/vim-go'
+
 call plug#end()
 
 set nofoldenable " disable folding
@@ -102,6 +105,9 @@ hi MatchParen cterm=none ctermbg=cyan ctermfg=yellow
 let g:vimtex_compiler_latexmk = {
             \ 'build_dir' : 'Output',
             \}
+
+" Go
+autocmd Filetype go set autoindent noexpandtab tabstop=4 shiftwidth=4
 
 " Disable beeping
 set noerrorbells
