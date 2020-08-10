@@ -12,6 +12,7 @@
 /.config/*
 !/.config/dunst
 !/.config/dwm
+!/.config/st
 !/.config/i3
 !/.config/ranger
 !/.config/markdown-latex
