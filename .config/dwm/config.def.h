@@ -24,6 +24,9 @@ static const char *colors[][3]     = {
 	[SchemeSel]                = { col_dark_gray, col_white,  col_blue  },
 };
 
+/* False means using the scroll wheel on a window will not change focus */
+static const Bool focusonwheelscroll = False;
+
 /* tagging */
 static const char *tags[] = { "1", "2", "3", "4", "5", "6", "7", "8", "9" };
 
