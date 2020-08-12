@@ -36,12 +36,18 @@ static const Rule rules[] = {
 	 *	WM_NAME(STRING) = title
 	 */
 	/* class      instance    title       tags mask     isfloating   monitor */
-	{ "Gimp",     NULL,       NULL,       0,            1,           -1 },
-	{ "Firefox",  NULL,       NULL,       1 << 8,       0,           -1 },
+	{ "Gimp",     NULL,       NULL,       0,            0,           -1 },
+	{ "Brave-browser",  NULL,       NULL,       1 << 0,       0,           -1 },
+	{ "st-256color",  NULL,       NULL,       1 << 1,       0,           -1 }, 
+	{ "okular",  NULL,       NULL,       1 << 2,       0,           -1 }, 
+	{ "zoom",  NULL,       NULL,       1 << 8,       0,           -1 }, 
+	{ "Skype",  NULL,       NULL,       1 << 8,       0,           -1 }, 
+	{ "Microsoft Teams - Preview",  NULL,       NULL,       1 << 8,       0,           -1 }, 
+	{ "WxWabbitemu",     NULL,       NULL,       0,            1,           -1 },
 };
 
 /* layout(s) */
-static const float mfact     = 0.6; /* factor of master area size [0.05..0.95] */
+static const float mfact     = 0.6;  /* factor of master area size [0.05..0.95] */
 static const int nmaster     = 1;    /* number of clients in master area */
 static const int resizehints = 0;    /* 1 means respect size hints in tiled resizals */
 
