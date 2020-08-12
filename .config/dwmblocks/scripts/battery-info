@@ -1,0 +1,16 @@
+#!/bin/sh
+
+# If ACPI was not installed, this probably is a battery-less computer.
+ACPI_RES=$(acpi -b)
+ACPI_CODE=$?
+if [ $ACPI_CODE -eq 0 ]
+then
+    # Get essential information. Due to some bug with some versions of acpi it is
+    # worth filtering the ACPI result from all lines containing "unavailable".
+    BAT_LEVEL_ALL=$(echo "$ACPI_RES" | grep -v "unavailable" | grep -E -o "[0-9][0-9]?[0-9]?%")
+    BAT_LEVEL=$(echo "$BAT_LEVEL_ALL" | awk -F"%" 'BEGIN{tot=0;i=0} {i++; tot+=$1} END{printf("%d%%\n", tot/i)}')
+    IS_CHARGING=$(echo "$ACPI_RES" | grep -v "unavailable" | awk '{ printf("%s\n", substr($3, 0, length($3)-1) ) }')
+
+    # Print full text. The charging data.
+    echo " $BAT_LEVEL"
+fi
