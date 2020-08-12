@@ -99,6 +99,9 @@ static Key keys[] = {
 	{ MODKEY,                       XK_period, focusmon,       {.i = +1 } },
 	{ MODKEY|ShiftMask,             XK_comma,  tagmon,         {.i = -1 } },
 	{ MODKEY|ShiftMask,             XK_period, tagmon,         {.i = +1 } },
+	{ MODKEY,                       XK_u,      spawn,          SHCMD("udiskie-mount /dev/sdb && cd /media/dovydas && st ranger") },
+	{ MODKEY|ShiftMask,             XK_u,      spawn,          SHCMD("udiskie-umount /dev/sdb && notify-send -t 3000 \"/dev/sdb unmounted\"") },
+	{ MODKEY,                       XK_Print,  spawn,          SHCMD("import png:- | xclip -selection clipboard -t image/png") },
 	TAGKEYS(                        XK_1,                      0)
 	TAGKEYS(                        XK_2,                      1)
 	TAGKEYS(                        XK_3,                      2)
