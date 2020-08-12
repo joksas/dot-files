@@ -119,6 +119,12 @@ highlight Pmenu ctermfg=white guifg=white ctermbg=black guibg=black
 " Selected item
 highlight PmenuSel ctermfg=black guifg=black ctermbg=red guibg=red
 
+" Define spell check highlight colors
+hi SpellBad    ctermfg=007      ctermbg=009     cterm=none
+hi SpellCap    ctermfg=009      ctermbg=007     cterm=none
+hi SpellLocal  ctermfg=007      ctermbg=012     cterm=none
+hi SpellRare   ctermfg=007      ctermbg=012     cterm=none
+
 " Convert markdown files to pdf
 autocmd Filetype markdown map <F5> :!pandoc<space><C-r>%<space>-V<space>geometry:a4paper<space>-V<space>geometry:margin=3cm<space>-V<space>linkcolor:blue<space>-H<space>"/home/dovydas/.config/markdown-latex/text-formatting.sty"<space>-o<space><C-r>%<backspace><backspace>pdf<Enter>
 autocmd Filetype rmd map <F5> :!pandoc<space><C-r>%<space>-V<space>geometry:a4paper<space>-V<space>geometry:margin=3cm<space>-V<space>linkcolor:blue<space>-H<space>"/home/dovydas/.config/markdown-latex/definitions.sty"<space>-H<space>"/home/dovydas/.config/markdown-latex/miscellaneous.sty"<space>-H<space>"/home/dovydas/.config/markdown-latex/text-formatting.sty"<space>-o<space><C-r>%<backspace><backspace><backspace>pdf<Enter>
