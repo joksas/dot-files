@@ -7,7 +7,7 @@ static const unsigned int gappx    = 7;        /* gap pixel between windows */
 static const unsigned int snap     = 32;       /* snap pixel */
 static const int showbar           = 1;        /* 0 means no bar */
 static const int topbar            = 1;        /* 0 means bottom bar */
-static const char *fonts[]         = { "monospace:size=14" };
+static const char *fonts[]         = { "monospace:size=14", "Font Awesome:size=14" };
 static const char dmenufont[]      = "monospace:size=14";
 static const char col_gray1[]      = "#222222";
 static const char col_gray2[]      = "#444444";
@@ -73,9 +73,6 @@ static const Layout layouts[] = {
 static char dmenumon[2] = "0"; /* component of dmenucmd, manipulated in spawn() */
 static const char *dmenucmd[] = { "dmenu_run", "-m", dmenumon, "-fn", dmenufont, "-nb", col_dark_gray, "-nf", col_white, "-sb", col_white, "-sf", col_dark_gray, NULL };
 static const char *termcmd[]  = { "st", NULL };
-static const char *upvol[]   = { "/usr/bin/pactl", "set-sink-volume", "0", "+5%",     NULL };
-static const char *downvol[] = { "/usr/bin/pactl", "set-sink-volume", "0", "-5%",     NULL };
-static const char *mutevol[] = { "/usr/bin/pactl", "set-sink-mute",   "0", "toggle",  NULL };
 
 static Key keys[] = {
 	/* modifier                     key        function        argument */
@@ -118,9 +115,9 @@ static Key keys[] = {
 	TAGKEYS(                        XK_8,                      7)
 	TAGKEYS(                        XK_9,                      8)
 	{ MODKEY|ShiftMask,             XK_q,      quit,           {0} },
-	{ 0,                       XF86XK_AudioLowerVolume, spawn, {.v = downvol } },
-	{ 0,                       XF86XK_AudioMute, spawn, {.v = mutevol } },
-	{ 0,                       XF86XK_AudioRaiseVolume, spawn, {.v = upvol   } },
+	{ 0,                            XF86XK_AudioLowerVolume, spawn, SHCMD("amixer -q -D pulse sset Master 5%- && kill -44 $(pidof dwmblocks)") },
+	{ 0,                            XF86XK_AudioRaiseVolume, spawn, SHCMD("amixer -q -D pulse sset Master 5%+ && kill -44 $(pidof dwmblocks)") },
+	{ 0,                            XF86XK_AudioMute, spawn, SHCMD("amixer -q -D pulse sset Master toggle && kill -44 $(pidof dwmblocks)") },
 };
 
 /* button definitions */
