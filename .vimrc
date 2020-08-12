@@ -36,9 +36,12 @@ set iskeyword+=:
 let b:suppress_latex_suite = 1
 
 " Alt+X, Alt+C and Alt+V bindings:
-vnoremap <A-x> "+d
-vnoremap <A-c> "+y
-map <A-v> "+P
+execute "set <M-x>=\ex"
+vnoremap <M-x> "+d
+execute "set <M-c>=\ec"
+vnoremap <M-c> "+y
+execute "set <M-v>=\ev"
+map <M-v> "+P
 
 " Enable spell-check by default
 setlocal spell! spelllang=en_us
@@ -49,10 +52,14 @@ map <F2> :setlocal spell! spelllang=en_gb<CR>
 map <F3> :setlocal spell! spelllang=lt<CR>
 
 " Remap keys for moving in visual lines
-:noremap <A-j> gj
-:noremap <A-k> gk
-:noremap <A-$> g$
-:noremap <A-0> g0
+execute "set <M-j>=\ej"
+:noremap <M-j> gj
+execute "set <M-k>=\ek"
+:noremap <M-k> gk
+execute "set <M-l>=\el"
+:noremap <M-l> g$
+execute "set <M-h>=\eh"
+:noremap <m-h> g0
 
 " Specify a directory for plugins
 call plug#begin('~/.vim/plugged')
