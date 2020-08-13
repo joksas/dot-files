@@ -114,7 +114,7 @@ static Key keys[] = {
 	TAGKEYS(                        XK_7,                      6)
 	TAGKEYS(                        XK_8,                      7)
 	TAGKEYS(                        XK_9,                      8)
-	{ MODKEY|ShiftMask,             XK_q,      quit,           {0} },
+	{ MODKEY|ControlMask|ShiftMask,             XK_q,      quit,           {0} },
 	{ 0,                            XF86XK_AudioLowerVolume, spawn, SHCMD("amixer -q -D pulse sset Master 5%- && kill -44 $(pidof dwmblocks)") },
 	{ 0,                            XF86XK_AudioRaiseVolume, spawn, SHCMD("amixer -q -D pulse sset Master 5%+ && kill -44 $(pidof dwmblocks)") },
 	{ 0,                            XF86XK_AudioMute, spawn, SHCMD("amixer -q -D pulse sset Master toggle && kill -44 $(pidof dwmblocks)") },
