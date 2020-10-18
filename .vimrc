@@ -80,22 +80,29 @@ nmap ga <Plug>(EasyAlign)
 " Surround text with symbols
 Plug 'tpope/vim-surround'
 
-" Vimtex
+" LaTeX
 Plug 'lervag/vimtex'
 
 " R markdown
-Plug 'vim-pandoc/vim-pandoc'
-Plug 'vim-pandoc/vim-pandoc-syntax' 
-Plug 'vim-pandoc/vim-rmarkdown'
+Plug 'gabrielelana/vim-markdown'
 
 " Python
-Plug 'hdima/python-syntax'
+Plug 'vim-syntastic/syntastic'
+let g:syntastic_python_python_exec = 'python3'
+let g:syntastic_python_checkers = ['python']
+Plug 'nvie/vim-flake8'
+let python_highlight_all=1
+syntax on
+Plug 'heavenshell/vim-pydocstring', { 'do': 'make install' }
+let g:pydocstring_formatter = 'numpy'
+let g:pydocstring_doq_path = '~/.vim/venv/bin/doq'
 
 " Check grammar
 Plug 'rhysd/vim-grammarous'
 
 " Go
 Plug 'fatih/vim-go'
+let g:go_fmt_command = "goimports"
 
 call plug#end()
 
@@ -131,6 +138,11 @@ hi SpellBad    ctermfg=007      ctermbg=009     cterm=none
 hi SpellCap    ctermfg=009      ctermbg=007     cterm=none
 hi SpellLocal  ctermfg=007      ctermbg=012     cterm=none
 hi SpellRare   ctermfg=007      ctermbg=012     cterm=none
+
+" Define selected text colors
+hi Visual      ctermfg=000      ctermbg=015     cterm=none
+
+set ttimeoutlen=0
 
 " Convert markdown files to pdf
 autocmd Filetype markdown map <F5> :!pandoc<space><C-r>%<space>-V<space>geometry:a4paper<space>-V<space>geometry:margin=3cm<space>-V<space>linkcolor:blue<space>-H<space>"/home/dovydas/.config/markdown-latex/text-formatting.sty"<space>-o<space><C-r>%<backspace><backspace>pdf<Enter>
