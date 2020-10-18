@@ -19,7 +19,7 @@ DIR="${BLOCK_INSTANCE:-$HOME}"
 df -h -P -l "$DIR" | awk -v alert_low=$ALERT_LOW '
 /\/.*/ {
 	# short text
-	print $4
+	print " " $4
 
 	# no need to continue parsing
 	exit 0

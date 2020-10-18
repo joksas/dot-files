@@ -1,3 +1,13 @@
 #!/bin/sh
 
-sensors | awk '/Core 0/ {print $3}' | sed 's/+//g' | sed 's/\..°/°/g'
+temp=$(sensors | awk '/Core 0/ {print $3}' | sed 's/+//g');
+temp=${temp%.*}
+
+if [ "$temp" -lt 75 ]
+then
+  icon=""
+else
+  icon=""
+fi
+
+echo "$icon $temp°C"

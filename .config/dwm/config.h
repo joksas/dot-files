@@ -7,7 +7,7 @@ static const unsigned int gappx    = 7;        /* gap pixel between windows */
 static const unsigned int snap     = 32;       /* snap pixel */
 static const int showbar           = 1;        /* 0 means no bar */
 static const int topbar            = 1;        /* 0 means bottom bar */
-static const char *fonts[]         = { "monospace:size=14", "Font Awesome:size=14" };
+static const char *fonts[]         = { "monospace:size=14", "Font Awesome 5 Free:size=14", "Font Awesome 5 Brands:size=14"};
 static const char dmenufont[]      = "monospace:size=14";
 static const char col_gray1[]      = "#222222";
 static const char col_gray2[]      = "#444444";
@@ -80,7 +80,7 @@ static Key keys[] = {
 	{ MODKEY|ShiftMask,             XK_Return, spawn,          {.v = termcmd } },
 	{ MODKEY|ShiftMask,             XK_r,      spawn,          SHCMD("st ranger") },
 	{ MODKEY|ShiftMask,             XK_l,      spawn,          SHCMD("i3lock-fancy-dualmonitor") },
-	{ MODKEY|ShiftMask,             XK_b,      spawn,          SHCMD("sensible-browser") },
+	{ MODKEY|ShiftMask,             XK_b,      spawn,          SHCMD("brave") },
 	{ MODKEY,                       XK_b,      togglebar,      {0} },
 	{ MODKEY,                       XK_j,      focusstack,     {.i = +1 } },
 	{ MODKEY,                       XK_k,      focusstack,     {.i = -1 } },
@@ -102,8 +102,8 @@ static Key keys[] = {
 	{ MODKEY,                       XK_period, focusmon,       {.i = +1 } },
 	{ MODKEY|ShiftMask,             XK_comma,  tagmon,         {.i = -1 } },
 	{ MODKEY|ShiftMask,             XK_period, tagmon,         {.i = +1 } },
-	{ MODKEY,                       XK_u,      spawn,          SHCMD("udiskie-mount /dev/sdb && cd /run/media/dovydas && st ranger") },
-	{ MODKEY|ShiftMask,             XK_u,      spawn,          SHCMD("udiskie-umount /dev/sdb && notify-send -t 3000 \"/dev/sdb unmounted\"") },
+	{ MODKEY,                       XK_u,      spawn,          SHCMD("udiskie-mount /dev/sdb1 && cd /run/media/dovydas && st ranger") },
+	{ MODKEY|ShiftMask,             XK_u,      spawn,          SHCMD("udiskie-umount /dev/sdb1 && notify-send -t 3000 \"/dev/sdb1 unmounted\"") },
 	{ MODKEY,                       XK_Print,  spawn,          SHCMD("import png:- | xclip -selection clipboard -t image/png") },
 	TAGKEYS(                        XK_1,                      0)
 	TAGKEYS(                        XK_2,                      1)
