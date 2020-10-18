@@ -1,0 +1,23 @@
+#!/bin/sh
+
+# Resizes JPEG images below certain size
+
+size=512000
+k_size="512k"
+
+while getopts s: opt; do
+  case $opt in
+    s) k_size=${OPTARG}
+      size=$(( 1000*k_size )) ;;
+    ?) echo "I don't know what $OPTARG is!"
+  esac
+shift
+shift
+done
+
+for file in "$@"; do
+  filesize=$(stat -c%s "$file") 
+  if [ "$filesize" -gt "$size" ] ; then 
+    jpegoptim --size="$k_size" "$file"
+  fi
+done
