@@ -119,8 +119,9 @@ fi
 # default editor is vim
 VISUAL=vim; export VISUAL EDITOR=vim; export EDITOR
 
-# add path
-export PATH=$PATH":$HOME/.bin:/sbin:/home/linuxbrew/.linuxbrew/bin"
+# add paths
+export GOPATH="$HOME/.go"
+export PATH=/bin:/usr/local/bin:$HOME/.bin:/sbin:/home/linuxbrew/.linuxbrew/bin:$GOPATH/bin:$HOME/.config/dwmblocks/scripts:$HOME/.bin/dart-sass:/usr/local/go/bin
 
 [ -f ~/.fzf.bash ] && source ~/.fzf.bash
 
