@@ -6,6 +6,7 @@
 !/.git
 !/.gitignore
 !/.vimrc
+!/.xinitrc
 !/.Xresources
 
 !/.config/
