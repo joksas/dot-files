@@ -102,7 +102,7 @@ static Key keys[] = {
 	{ MODKEY,                       XK_period, focusmon,       {.i = +1 } },
 	{ MODKEY|ShiftMask,             XK_comma,  tagmon,         {.i = -1 } },
 	{ MODKEY|ShiftMask,             XK_period, tagmon,         {.i = +1 } },
-	{ MODKEY,                       XK_u,      spawn,          SHCMD("udiskie-mount /dev/sdb && cd /media/dovydas && st ranger") },
+	{ MODKEY,                       XK_u,      spawn,          SHCMD("udiskie-mount /dev/sdb && cd /run/media/dovydas && st ranger") },
 	{ MODKEY|ShiftMask,             XK_u,      spawn,          SHCMD("udiskie-umount /dev/sdb && notify-send -t 3000 \"/dev/sdb unmounted\"") },
 	{ MODKEY,                       XK_Print,  spawn,          SHCMD("import png:- | xclip -selection clipboard -t image/png") },
 	TAGKEYS(                        XK_1,                      0)
@@ -115,9 +115,9 @@ static Key keys[] = {
 	TAGKEYS(                        XK_8,                      7)
 	TAGKEYS(                        XK_9,                      8)
 	{ MODKEY|ControlMask|ShiftMask,             XK_q,      quit,           {0} },
-	{ 0,                            XF86XK_AudioLowerVolume, spawn, SHCMD("amixer -q -D pulse sset Master 5%- && kill -44 $(pidof dwmblocks)") },
-	{ 0,                            XF86XK_AudioRaiseVolume, spawn, SHCMD("amixer -q -D pulse sset Master 5%+ && kill -44 $(pidof dwmblocks)") },
-	{ 0,                            XF86XK_AudioMute, spawn, SHCMD("amixer -q -D pulse sset Master toggle && kill -44 $(pidof dwmblocks)") },
+	{ 0,                            XF86XK_AudioLowerVolume, spawn, SHCMD("amixer set Master 5%- && kill -44 $(pidof dwmblocks)") },
+	{ 0,                            XF86XK_AudioRaiseVolume, spawn, SHCMD("amixer set Master 5%+ && kill -44 $(pidof dwmblocks)") },
+	{ 0,                            XF86XK_AudioMute, spawn, SHCMD("amixer set Master toggle && kill -44 $(pidof dwmblocks)") },
 };
 
 /* button definitions */
