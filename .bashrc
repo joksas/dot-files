@@ -121,7 +121,7 @@ VISUAL=vim; export VISUAL EDITOR=vim; export EDITOR
 
 # add paths
 export GOPATH="$HOME/.go"
-export PATH=/bin:/usr/local/bin:$HOME/.bin:/sbin:/home/linuxbrew/.linuxbrew/bin:$GOPATH/bin:$HOME/.config/dwmblocks/scripts:$HOME/.bin/dart-sass:/usr/local/go/bin
+export PATH=/bin:/usr/local/bin:$HOME/.bin:/sbin:/home/linuxbrew/.linuxbrew/bin:$GOPATH/bin:$HOME/.config/dwmblocks/scripts:$HOME/.bin/dart-sass:/usr/local/go/bin:/opt/texlive/2020/bin/x86_64-linux
 
 [ -f ~/.fzf.bash ] && source ~/.fzf.bash
 
