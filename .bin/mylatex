@@ -1,26 +1,30 @@
 #!/bin/bash
 
 filename="main"
-foldername="Output"
+foldername="output"
 mkdir -p $foldername
-texfot pdflatex -aux-directory=$foldername -output-directory=$foldername $filename
+mkdir -p $foldername/tikz
+find $foldername -maxdepth 1 -name "main*" -exec mv -t . {} +
+texfot pdflatex -shell-escape $filename
 
 while getopts :bai opt; do
   case $opt in
-    b) biber --input-directory=$foldername --output-directory=$foldername $filename
-       texfot pdflatex -aux-directory=$foldername -output-directory=$foldername $filename
+    b) bibtex $filename
+      texfot pdflatex -shell-escape $filename
+      texfot pdflatex -shell-escape $filename
       ;;
-    a) makeglossaries -d $foldername $filename
-       texfot pdflatex -aux-directory=$foldername -output-directory=$foldername $filename
-       texfot pdflatex -aux-directory=$foldername -output-directory=$foldername $filename
+    a) makeglossaries $filename
+      texfot pdflatex -shell-escape $filename
+      texfot pdflatex -shell-escape $filename
       ;;
-    i) makeindex $foldername/$filename
-       texfot pdflatex -aux-directory=$foldername -output-directory=$foldername $filename
-       ;;
+    i) makeindex $filename
+      texfot pdflatex -shell-escape $filename
+      ;;
     ?) echo "I don't know what $OPTARG is!"
   esac
 done
 
-cd Output
+find . -maxdepth 1 -name "main*" ! -name main.tex -exec mv -t $foldername {} +
+cd $foldername
 new_name=$(basename "${PWD%/*}.pdf")
 mv main.pdf "$new_name"
