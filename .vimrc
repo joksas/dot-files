@@ -103,7 +103,6 @@ let python_highlight_all=1
 syntax on
 Plug 'heavenshell/vim-pydocstring', { 'do': 'make install' }
 let g:pydocstring_formatter = 'numpy'
-let g:pydocstring_doq_path = '~/.vim/venv/bin/doq'
 
 " Check grammar
 Plug 'rhysd/vim-grammarous'
