@@ -44,11 +44,11 @@ execute "set <M-v>=\ev"
 map <M-v> "+P
 
 " Enable spell-check by default
-setlocal spell! spelllang=en_us
+setlocal spell! spelllang=en_gb
 
 " Toggle spell-check
-map <F1> :setlocal spell! spelllang=en_us<CR>
-map <F2> :setlocal spell! spelllang=en_gb<CR>
+map <F1> :setlocal spell! spelllang=en_gb<CR>
+map <F2> :setlocal spell! spelllang=en_us<CR>
 map <F3> :setlocal spell! spelllang=lt<CR>
 
 " Remap keys for moving in visual lines
