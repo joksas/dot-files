@@ -86,6 +86,14 @@ Plug 'lervag/vimtex'
 " R markdown
 Plug 'gabrielelana/vim-markdown'
 
+" Git
+Plug 'airblade/vim-gitgutter'
+set updatetime=100
+highlight! link SignColumn LineNr
+highlight GitGutterAdd    ctermfg=2
+highlight GitGutterDelete ctermfg=1
+highlight GitGutterChange ctermfg=4
+
 " Python
 Plug 'vim-syntastic/syntastic'
 let g:syntastic_python_python_exec = 'python3'
