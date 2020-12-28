@@ -104,7 +104,7 @@ static const char *colorname[] = {
 	"#666666", // cyan
 	"#ffffff", // white
 
-	"#000000", // black  
+	"#9e6f2c", // brownish orange
 	"#e22222", // red
 	"#4aa54f", // green
 	"#f6b151", // yellow
@@ -119,7 +119,6 @@ static const char *colorname[] = {
 	"#dddddd",
 	"#101010"
 };
-
 
 /*
  * Default colors (colorname index)
