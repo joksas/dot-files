@@ -20,10 +20,6 @@ set wildmode=longest,list,full
 " REQUIRED. This makes vim invoke Latex-Suite when you open a tex file.
 filetype plugin on
 
-" IMPORTANT: win32 users will need to have 'shellslash' set so that latex
-" can be called correctly.
-set shellslash
-
 " OPTIONAL: This enables automatic indentation as you type.
 filetype indent on
 
@@ -86,13 +82,16 @@ Plug 'lervag/vimtex'
 " R markdown
 Plug 'gabrielelana/vim-markdown'
 
+" Tables
+Plug 'godlygeek/tabular'
+
 " Git
 Plug 'airblade/vim-gitgutter'
 set updatetime=100
 highlight! link SignColumn LineNr
-highlight GitGutterAdd    ctermfg=2
-highlight GitGutterDelete ctermfg=1
-highlight GitGutterChange ctermfg=4
+highlight  GitGutterAdd    ctermfg=2
+highlight  GitGutterDelete ctermfg=1
+highlight  GitGutterChange ctermfg=4
 
 " Python
 Plug 'vim-syntastic/syntastic'
@@ -104,6 +103,9 @@ syntax on
 Plug 'heavenshell/vim-pydocstring', { 'do': 'make install' }
 let g:pydocstring_formatter = 'numpy'
 
+" Matlab
+Plug 'vim-scripts/MatlabFilesEdition'
+
 " Check grammar
 Plug 'rhysd/vim-grammarous'
 
@@ -114,7 +116,7 @@ let g:go_fmt_command = "goimports"
 call plug#end()
 
 set nofoldenable " disable folding
-set conceallevel=1
+set conceallevel=0
 let g:tex_conceal = ""
 autocmd bufreadpre *.md setlocal ft=tex 
 autocmd bufreadpre *.rmd setlocal ft=tex 
@@ -124,7 +126,7 @@ hi MatchParen cterm=none ctermbg=cyan ctermfg=yellow
 
 " Change location of vimtex build
 let g:vimtex_compiler_latexmk = {
-            \ 'build_dir' : 'Output',
+            \ 'build_dir' : 'output',
             \}
 
 " Go
