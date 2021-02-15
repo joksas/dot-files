@@ -119,6 +119,10 @@ fi
 # default editor is vim
 VISUAL=vim; export VISUAL EDITOR=vim; export EDITOR
 
+# Python
+export PYENV_ROOT="$HOME/.pyenv/versions/3.8.7"
+export PATH="$PYENV_ROOT/bin:$PATH"
+
 # add paths
 export GOPATH="$HOME/.go"
 export PATH=/bin:/usr/local/bin:$HOME/.bin:/sbin:/home/linuxbrew/.linuxbrew/bin:$GOPATH/bin:$HOME/.config/dwmblocks/scripts:$HOME/.bin/dart-sass:/usr/local/go/bin:/opt/texlive/2020/bin/x86_64-linux
@@ -136,3 +140,19 @@ trap 'printf "\033]0;%s\007" "${BASH_COMMAND//[^[:print:]]/}"' DEBUG
 
 # avoid loading default ranger config file
 export RANGER_LOAD_DEFAULT_RC=false
+
+# >>> conda initialize >>>
+# !! Contents within this block are managed by 'conda init' !!
+__conda_setup="$('/home/dovydas/.anaconda3/bin/conda' 'shell.bash' 'hook' 2> /dev/null)"
+if [ $? -eq 0 ]; then
+    eval "$__conda_setup"
+else
+    if [ -f "/home/dovydas/.anaconda3/etc/profile.d/conda.sh" ]; then
+        . "/home/dovydas/.anaconda3/etc/profile.d/conda.sh"
+    else
+        export PATH="/home/dovydas/.anaconda3/bin:$PATH"
+    fi
+fi
+unset __conda_setup
+# <<< conda initialize <<<
+
