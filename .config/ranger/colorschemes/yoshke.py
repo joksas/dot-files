@@ -32,7 +32,7 @@ class base(ColorScheme):
                 attr |= bold
                 fg = 1
             if context.directory:
-                fg = 12
+                fg = 4
             elif context.executable and not \
                     any((context.media, context.container,
                        context.fifo, context.socket)):
@@ -71,7 +71,7 @@ class base(ColorScheme):
             if context.hostname:
                 fg = context.bad and 8 or 7
             elif context.directory:
-                fg = 12
+                fg = 4
             elif context.tab:
                 if context.good:
                     attr |= bold
@@ -125,7 +125,7 @@ class base(ColorScheme):
             if context.vcsconflict:
                 fg = 11
             elif context.vcschanged:
-                fg = 12
+                fg = 4
             elif context.vcsunknown:
                 fg = 210
             elif context.vcsstaged:
@@ -138,7 +138,7 @@ class base(ColorScheme):
         elif context.vcsremote and not context.selected:
             attr &= ~bold
             if context.vcssync:
-                fg = 12
+                fg = 4
             elif context.vcsbehind:
                 fg = 13
             elif context.vcsahead:
