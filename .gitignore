@@ -29,5 +29,11 @@
 !/.config/st/config.def.h
 !/.config/st/st.c
 
+!/.config/dwm
+/.config/dwm/*
+!/.config/dwm/patches
+!/.config/dwm/config.def.h
+!/.config/dwm/dwm.c
+
 *.swp
 
