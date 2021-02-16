@@ -14,7 +14,6 @@
 !/.config/dunst
 !/.config/dwm
 !/.config/dwmblocks
-!/.config/st
 !/.config/ranger
 !/.config/markdown-latex
 
@@ -24,4 +23,11 @@
 /.config/GIMP/2.10/*
 !/.config/GIMP/2.10/scripts
 
+!/.config/st
+/.config/st/*
+!/.config/st/patches
+!/.config/st/config.def.h
+!/.config/st/st.c
+
 *.swp
+
