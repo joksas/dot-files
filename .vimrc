@@ -10,6 +10,7 @@ set wrap
 set laststatus=2
 set ruler
 set number relativenumber
+set linebreak
 
 " Indent text on the same logical line
 set breakindent
@@ -97,6 +98,7 @@ highlight  GitGutterChange ctermfg=4
 Plug 'vim-syntastic/syntastic'
 let g:syntastic_python_python_exec = 'python3'
 let g:syntastic_python_checkers = ['python']
+let g:syntastic_mode_map = { 'passive_filetypes': ['tex'] }
 Plug 'nvie/vim-flake8'
 let python_highlight_all=1
 syntax on
@@ -136,22 +138,43 @@ autocmd Filetype go set autoindent noexpandtab tabstop=4 shiftwidth=4
 set noerrorbells
 set vb t_vb=
 
-" Define Pmenu autocompletion colours
-" Unselected items
+" Highlight colors
+
+" General
+hi Visual      ctermfg=000      ctermbg=015     cterm=none
+highlight LineNr ctermfg=015
+highlight Comment ctermfg=015
+highlight Identifier ctermfg=012
+highlight Constant ctermfg=003
+highlight PreProc ctermfg=012
+highlight Statement ctermfg=004
+highlight ErrorMsg ctermfg=007 ctermbg=009
+highlight Search ctermfg=000 ctermbg=003
+
+" Autocomplete menu
 highlight Pmenu ctermfg=white guifg=white ctermbg=black guibg=black
-" Selected item
 highlight PmenuSel ctermfg=black guifg=black ctermbg=red guibg=red
 
-" Define spell check highlight colors
-hi SpellBad    ctermfg=007      ctermbg=009     cterm=none
+" Spelling
+hi SpellBad    ctermfg=009      ctermbg=000     cterm=underline
 hi SpellCap    ctermfg=009      ctermbg=007     cterm=none
-hi SpellLocal  ctermfg=007      ctermbg=012     cterm=none
+hi SpellLocal  ctermfg=001      ctermbg=000     cterm=underline
 hi SpellRare   ctermfg=007      ctermbg=012     cterm=none
 
-" Define selected text colors
-hi Visual      ctermfg=000      ctermbg=015     cterm=none
+" LaTeX
+highlight texCmd ctermfg=012
+highlight texArg ctermfg=001
+highlight texMathArg ctermfg=003
+highlight texMathGroup ctermfg=003
+highlight texMathZoneEnv ctermfg=003
+highlight texMathZoneX ctermfg=003
 
 set ttimeoutlen=0
+
+" See what highlight groups are used.
+map <F10> :echo "hi<" . synIDattr(synID(line("."),col("."),1),"name") . '> trans<'
+\ . synIDattr(synID(line("."),col("."),0),"name") . "> lo<"
+\ . synIDattr(synIDtrans(synID(line("."),col("."),1)),"name") . ">"<CR>
 
 " Convert markdown files to pdf
 autocmd Filetype markdown map <F5> :!pandoc<space><C-r>%<space>-V<space>geometry:a4paper<space>-V<space>geometry:margin=3cm<space>-V<space>linkcolor:blue<space>-H<space>"/home/dovydas/.config/markdown-latex/text-formatting.sty"<space>-o<space><C-r>%<backspace><backspace>pdf<Enter>
