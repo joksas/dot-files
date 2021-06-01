@@ -34,6 +34,7 @@
 !/.config/dwm/patches
 !/.config/dwm/config.def.h
 !/.config/dwm/dwm.c
+!/.config/dwm/x.c
 
 *.swp
 
