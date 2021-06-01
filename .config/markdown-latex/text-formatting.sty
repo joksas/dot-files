@@ -1,3 +1,5 @@
+\usepackage[a4paper,left=20mm, right=20mm, top=20mm, bottom=20mm]{geometry}
+
 % One-and-a-half spacing for the text, except for figure captions.
 \usepackage[onehalfspacing]{setspace}
 
@@ -10,22 +12,75 @@
 % For typesetting maths intervals
 \usepackage{interval}
 
-% Enable to-do lists:
-\newlist{todolist}{itemize}{2}
-\setlist[todolist]{label=$\square$}
-\usepackage{pifont}
-\newcommand{\cmark}{\ding{51}}%
-\newcommand{\xmark}{\ding{55}}%
-\newcommand{\done}{\rlap{$\square$}{\raisebox{2pt}{\large\hspace{1pt}\cmark}}%
-\hspace{-2.5pt}}
-\newcommand{\wontfix}{\rlap{$\square$}{\large\hspace{1pt}\xmark}}
+\usepackage{xcolor}
+
+\definecolor{blue}{RGB}{0, 114, 178}
+\definecolor{orange}{RGB}{230, 159, 0}
+\definecolor{green}{RGB}{0, 158, 115}
+\definecolor{reddish-purple}{RGB}{204, 121, 167 }
+\definecolor{sky-blue}{RGB}{86, 180, 233}
+\definecolor{vermilion}{RGB}{213, 94, 0}
+\definecolor{yellow}{RGB}{240, 228, 66}
+\definecolor{black}{RGB}{0, 0, 0}
+\definecolor{red}{RGB}{220, 53, 69}
+
+\definecolor{color-0}{RGB}{0, 114, 178}
+\definecolor{color-1}{RGB}{230, 159, 0}
+\definecolor{color-2}{RGB}{0, 158, 115}
+\definecolor{color-3}{RGB}{204, 121, 167}
+\definecolor{color-4}{RGB}{86, 180, 233}
+\definecolor{color-5}{RGB}{213, 94, 0}
+\definecolor{color-6}{RGB}{240, 228, 66}
+\definecolor{color-7}{RGB}{0, 0, 0}
+\definecolor{color-8}{RGB}{220, 53, 69}
 
 % Hyperlinks and their colours:
 \usepackage{hyperref}
 \hypersetup{
-    colorlinks,
-    citecolor=black,
-    filecolor=black,
-    linkcolor=black,
-    urlcolor=blue
+  colorlinks,
+  citecolor=black,
+  filecolor=black,
+  linkcolor=black,
+  urlcolor=blue
 }
+
+% Provides mathematical symbols.
+\usepackage{amssymb}
+
+% Provides bold symbols for linear algebra (Greek letters only).
+\usepackage{bm}
+
+% Bold symbols for linear algebra (non-Greek letters only).
+\newcommand{\matr}[1]{\mathbf{#1}}
+
+% Mapping notation
+\newcommand\map[2]{\left\langle #1, #2 \right\rangle}
+
+% Inner product notation
+\newcommand\inner[2]{\left( #1, #2 \right)}
+
+% Provides symbols for calculus, e.g. \od{y}{x}.
+% http://mirror.ox.ac.uk/sites/ctan.org/macros/latex/contrib/commath/commath.pdf
+\usepackage{commath}
+
+% Commenting
+\usepackage[textwidth=6cm]{todonotes}
+\usepackage{soul}
+
+\newcommand{\marginnote}[4]{%
+\colorlet{tempcolor}{#3}%
+\sethlcolor{tempcolor}%
+\color{#4}\hl{#1}\color{black}\todo[color=#3, textcolor=#4]{\begin{spacing}{0.5}\footnotesize#2\end{spacing}}%
+}
+
+\newcommand{\inlinenote}[3]{%
+\todo[inline, color=#2, textcolor=#3]{\begin{spacing}{0.5}\footnotesize#1\end{spacing}}%
+}
+
+\newcommand{\hlcolor}[3]{%
+\colorlet{tempcolor}{#2}%
+\sethlcolor{tempcolor}%
+\color{#3}\hl{#1}\color{black}%
+}
+
+\usepackage{physics}
