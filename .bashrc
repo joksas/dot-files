@@ -125,7 +125,7 @@ export PATH="$PYENV_ROOT/bin:$PATH"
 
 # add paths
 export GOPATH="$HOME/.go"
-export PATH=/bin:/usr/local/bin:$HOME/.bin:/sbin:/home/linuxbrew/.linuxbrew/bin:$GOPATH/bin:$HOME/.config/dwmblocks/scripts:$HOME/.bin/dart-sass:/usr/local/go/bin:/opt/texlive/2020/bin/x86_64-linux
+export PATH=/bin:/usr/local/bin:$HOME/.bin:/sbin:/home/linuxbrew/.linuxbrew/bin:$GOPATH/bin:$HOME/.config/dwmblocks/scripts:$HOME/.bin/dart-sass:/usr/local/go/bin:/opt/texlive/2020/bin/x86_64-linux:/sbin/site_perl
 
 [ -f ~/.fzf.bash ] && source ~/.fzf.bash
 
