@@ -43,6 +43,9 @@ map <M-v> "+P
 " Enable spell-check by default
 setlocal spell! spelllang=en_gb
 
+" Enable US English in Markdown files
+au BufNewFile,BufRead *.md setlocal spelllang=en_us
+
 " Toggle spell-check
 map <F1> :setlocal spell! spelllang=en_gb<CR>
 map <F2> :setlocal spell! spelllang=en_us<CR>
