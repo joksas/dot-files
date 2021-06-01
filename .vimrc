@@ -145,24 +145,28 @@ set vb t_vb=
 " Highlight colors
 
 " General
-hi Visual      ctermfg=000      ctermbg=015     cterm=none
+hi Visual ctermfg=000 ctermbg=007 cterm=bold
 highlight LineNr ctermfg=015
+highlight CursorLineNr ctermfg=002 cterm=bold
+set cursorline
+highlight Cursorline ctermfg=none cterm=bold
 highlight Comment ctermfg=015
 highlight Identifier ctermfg=012
 highlight Constant ctermfg=003
 highlight PreProc ctermfg=012
+highlight Title ctermfg=003
 highlight Statement ctermfg=004
 highlight ErrorMsg ctermfg=007 ctermbg=009
 highlight Search ctermfg=000 ctermbg=003
 
 " Autocomplete menu
-highlight Pmenu ctermfg=white guifg=white ctermbg=black guibg=black
-highlight PmenuSel ctermfg=black guifg=black ctermbg=red guibg=red
+highlight Pmenu ctermfg=007 ctermbg=008
+highlight PmenuSel ctermfg=000 ctermbg=004
 
 " Spelling
 hi SpellBad    ctermfg=009      ctermbg=000     cterm=underline
 hi SpellCap    ctermfg=009      ctermbg=007     cterm=none
-hi SpellLocal  ctermfg=001      ctermbg=000     cterm=underline
+hi SpellLocal  ctermfg=001      ctermbg=000
 hi SpellRare   ctermfg=007      ctermbg=012     cterm=none
 
 " LaTeX
