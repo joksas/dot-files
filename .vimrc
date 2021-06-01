@@ -185,5 +185,5 @@ map <F10> :echo "hi<" . synIDattr(synID(line("."),col("."),1),"name") . '> trans
 \ . synIDattr(synIDtrans(synID(line("."),col("."),1)),"name") . ">"<CR>
 
 " Convert markdown files to pdf
-autocmd Filetype markdown map <F5> :!pandoc<space><C-r>%<space>-V<space>geometry:a4paper<space>-V<space>geometry:margin=3cm<space>-V<space>linkcolor:blue<space>-H<space>"/home/dovydas/.config/markdown-latex/text-formatting.sty"<space>-o<space><C-r>%<backspace><backspace>pdf<Enter>
+autocmd Filetype markdown map <F5> :!pandoc<space><C-r>%<space>-H<space>"/home/dovydas/.config/markdown-latex/text-formatting.sty"<space>-o<space><C-r>%<backspace><backspace>pdf<Enter>
 autocmd Filetype rmd map <F5> :!pandoc<space><C-r>%<space>-V<space>geometry:a4paper<space>-V<space>geometry:margin=3cm<space>-V<space>linkcolor:blue<space>-H<space>"/home/dovydas/.config/markdown-latex/definitions.sty"<space>-H<space>"/home/dovydas/.config/markdown-latex/miscellaneous.sty"<space>-H<space>"/home/dovydas/.config/markdown-latex/text-formatting.sty"<space>-o<space><C-r>%<backspace><backspace><backspace>pdf<Enter>
