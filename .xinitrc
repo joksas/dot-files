@@ -9,7 +9,10 @@ if [ `xrandr | grep -c ' connected '` -eq 2 ]; then
 fi
 
 # Language
-setxkbmap -layout gb,lt -option grp:alt_shift_toggle &
+export GTK_IM_MODULE=fcitx
+export QT_IM_MODULE=fcitx
+export XMODIFIERS=@im=fcitx
+fcitx &
 
 # dwm status bar
 dwmblocks 2>&1 >/dev/null &
