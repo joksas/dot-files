@@ -1,3 +1,6 @@
+! 1.5 scaling
+Xft.dpi: 168
+
 ! Use a nice truetype font and size by default... 
 xterm*faceName: DejaVu Sans Mono Book
 xterm*faceSize: 15
