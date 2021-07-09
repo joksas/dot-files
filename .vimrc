@@ -125,6 +125,7 @@ Plug 'rhysd/vim-grammarous'
 Plug 'fatih/vim-go'
 let g:go_fmt_command = "goimports"
 au BufRead,BufNewFile *.gohtml set filetype=gohtmltmpl
+au BufRead,BufNewFile *.html set filetype=gohtmltmpl
 
 call plug#end()
 
