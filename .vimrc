@@ -11,6 +11,7 @@ set laststatus=2
 set ruler
 set number relativenumber
 set linebreak
+set expandtab
 
 " Indent text on the same logical line
 set breakindent
@@ -20,6 +21,8 @@ set wildmode=longest,list,full
 
 " REQUIRED. This makes vim invoke Latex-Suite when you open a tex file.
 filetype plugin on
+
+set omnifunc=syntaxcomplete#Complete
 
 " OPTIONAL: This enables automatic indentation as you type.
 filetype indent on
@@ -107,6 +110,10 @@ let python_highlight_all=1
 syntax on
 Plug 'heavenshell/vim-pydocstring', { 'do': 'make install' }
 let g:pydocstring_formatter = 'numpy'
+
+" Javascript
+let g:syntastic_javascript_checkers = ['eslint']
+let g:syntastic_javascript_eslint_exe = 'eslint -c ~/.eslintrc.json'
 
 " Matlab
 Plug 'vim-scripts/MatlabFilesEdition'
