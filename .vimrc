@@ -127,6 +127,9 @@ let g:go_fmt_command = "goimports"
 au BufRead,BufNewFile *.gohtml set filetype=gohtmltmpl
 au BufRead,BufNewFile *.html set filetype=gohtmltmpl
 
+" CSS/SCSS
+Plug 'ap/vim-css-color'
+
 call plug#end()
 
 set nofoldenable " disable folding
