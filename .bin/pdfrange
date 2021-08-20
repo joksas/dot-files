@@ -1,0 +1,24 @@
+#!/bin/sh
+
+# Extracts a range of pages from a PDF.
+
+function single_page {
+  echo $(printf '%s\n' "$(basename $1 .pdf)-p-${2}.pdf")
+}
+
+function multiple_pages {
+  echo $(printf '%s\n' "$(basename $1 .pdf)-pp-${2}-${3}.pdf")
+}
+
+new_filename=""
+if [ $# -eq 2 ] ; then
+  new_filename=$(single_page $1 $2)
+else
+  if [ $2 -eq $3 ]; then
+    new_filename=$(single_page $1 $2)
+  else
+    new_filename=$(multiple_pages $1 $2 $3)
+  fi
+fi
+
+pdftk $1 cat $2-$3 output $new_filename
