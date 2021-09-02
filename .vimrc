@@ -11,29 +11,22 @@ set laststatus=2
 set ruler
 set number relativenumber
 set linebreak
-set expandtab
+set noeol
 
 " Indent text on the same logical line
 set breakindent
 
 " Enable auto-complete
 set wildmode=longest,list,full
-
-" REQUIRED. This makes vim invoke Latex-Suite when you open a tex file.
-filetype plugin on
-
 set omnifunc=syntaxcomplete#Complete
+set completeopt-=preview
 
 " OPTIONAL: This enables automatic indentation as you type.
 filetype indent on
 
-let g:tex_flavor='latex'
-
 " indentation
 set sw=2
 set iskeyword+=:
-
-let b:suppress_latex_suite = 1
 
 " Alt+X, Alt+C and Alt+V bindings:
 execute "set <M-x>=\ex"
@@ -48,6 +41,7 @@ setlocal spell! spelllang=en_gb
 
 " Enable US English in Markdown files
 au BufNewFile,BufRead *.md setlocal spelllang=en_us
+" au BufRead,BufNewFile *.md set filetype=tex
 
 " Toggle spell-check
 map <F1> :setlocal spell! spelllang=en_gb<CR>
@@ -67,7 +61,6 @@ execute "set <M-h>=\eh"
 " Specify a directory for plugins
 call plug#begin('~/.vim/plugged')
 
-" Easy align https://github.com/junegunn/vim-easy-align
 " Try gaip=, where = is symbol around which one want to align
 " = can be preceded with the following:
 " = Around the 1st occurrences
@@ -75,7 +68,6 @@ call plug#begin('~/.vim/plugged')
 " *= Around all occurrences
 " **= Left/Right alternating alignment around all occurrences
 " <Enter> Switching between left/right/center alignment modes
-" Additionally, :'<,'>EasyAlign&mrl*l1r1 can be used inside LaTeX tables 
 Plug 'junegunn/vim-easy-align'
 xmap ga <Plug>(EasyAlign)
 nmap ga <Plug>(EasyAlign)
@@ -87,7 +79,7 @@ Plug 'tpope/vim-surround'
 Plug 'lervag/vimtex'
 
 " R markdown
-Plug 'gabrielelana/vim-markdown'
+Plug 'plasticboy/vim-markdown'
 
 " Tables
 Plug 'godlygeek/tabular'
@@ -100,32 +92,20 @@ highlight  GitGutterAdd    ctermfg=2
 highlight  GitGutterDelete ctermfg=1
 highlight  GitGutterChange ctermfg=4
 
-" Python
-Plug 'vim-syntastic/syntastic'
-let g:syntastic_python_python_exec = 'python3'
-let g:syntastic_python_checkers = ['python']
-let g:syntastic_mode_map = { 'passive_filetypes': ['tex'] }
-Plug 'nvie/vim-flake8'
-let python_highlight_all=1
-syntax on
-Plug 'heavenshell/vim-pydocstring', { 'do': 'make install' }
-let g:pydocstring_formatter = 'numpy'
-
-" Javascript
-let g:syntastic_javascript_checkers = ['eslint']
-let g:syntastic_javascript_eslint_exe = 'eslint -c ~/.eslintrc.json'
-
-" Matlab
-Plug 'vim-scripts/MatlabFilesEdition'
-
-" Check grammar
-Plug 'rhysd/vim-grammarous'
+" JSON
+au BufRead,BufNewFile *.json.log set filetype=json
 
 " Go
 Plug 'fatih/vim-go'
 let g:go_fmt_command = "goimports"
 au BufRead,BufNewFile *.gohtml set filetype=gohtmltmpl
 au BufRead,BufNewFile *.html set filetype=gohtmltmpl
+
+" Ale
+Plug 'dense-analysis/ale'
+
+" let g:ale_completion_enabled = 1
+" let g:ale_completion_autoimport = 1
 
 " CSS/SCSS
 Plug 'ap/vim-css-color'
@@ -134,9 +114,8 @@ call plug#end()
 
 set nofoldenable " disable folding
 set conceallevel=0
-let g:tex_conceal = ""
-autocmd bufreadpre *.md setlocal ft=tex 
-autocmd bufreadpre *.rmd setlocal ft=tex 
+" autocmd bufreadpre *.md setlocal ft=tex 
+" autocmd bufreadpre *.rmd setlocal ft=tex 
 
 " Change MatchParen colours
 hi MatchParen cterm=none ctermbg=cyan ctermfg=yellow
@@ -147,7 +126,7 @@ let g:vimtex_compiler_latexmk = {
             \}
 
 " Go
-autocmd Filetype go set autoindent noexpandtab tabstop=4 shiftwidth=4
+" autocmd Filetype go set autoindent noexpandtab tabstop=4 shiftwidth=4
 
 " Disable beeping
 set noerrorbells
@@ -196,5 +175,4 @@ map <F10> :echo "hi<" . synIDattr(synID(line("."),col("."),1),"name") . '> trans
 \ . synIDattr(synIDtrans(synID(line("."),col("."),1)),"name") . ">"<CR>
 
 " Convert markdown files to pdf
-autocmd Filetype markdown map <F5> :!pandoc<space><C-r>%<space>-H<space>"/home/dovydas/.config/markdown-latex/text-formatting.sty"<space>-o<space><C-r>%<backspace><backspace>pdf<Enter>
-autocmd Filetype rmd map <F5> :!pandoc<space><C-r>%<space>-V<space>geometry:a4paper<space>-V<space>geometry:margin=3cm<space>-V<space>linkcolor:blue<space>-H<space>"/home/dovydas/.config/markdown-latex/definitions.sty"<space>-H<space>"/home/dovydas/.config/markdown-latex/miscellaneous.sty"<space>-H<space>"/home/dovydas/.config/markdown-latex/text-formatting.sty"<space>-o<space><C-r>%<backspace><backspace><backspace>pdf<Enter>
+autocmd BufEnter,BufNew *.md map <F5> :!pandoc<space><C-r>%<space>-H<space>"/home/dovydas/.config/markdown-latex/base.sty"<space>-o<space><C-r>%<backspace><backspace>pdf<Enter>
