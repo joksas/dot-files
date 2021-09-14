@@ -1,0 +1,34 @@
+\usepackage[a4paper,left=20mm, right=20mm, top=20mm, bottom=20mm]{geometry}
+
+\usepackage[onehalfspacing]{setspace}
+
+% Removes spaces between items in a list and between the list and the text above and below it.
+\usepackage[shortlabels]{enumitem}
+\setlist[itemize]{nolistsep}
+\setlist[enumerate]{nolistsep}
+
+\usepackage{xcolor}
+\definecolor{blue}{RGB}{0, 114, 178}
+\definecolor{vermilion}{RGB}{213, 94, 0}
+\definecolor{black}{RGB}{0, 0, 0}
+
+% Hyperlinks and their colours:
+\usepackage{hyperref}
+\hypersetup{%
+  colorlinks,
+  citecolor=black,
+  filecolor=black,
+  linkcolor=black,
+  urlcolor=blue
+}
+
+\usepackage{listings}
+\lstset{%
+  language=[LaTeX]TeX,
+  breaklines=true,
+  basicstyle=\tt,
+  keywordstyle=\color{blue},
+  identifierstyle=\color{vermilion},
+}
+
+\usepackage{commath}
