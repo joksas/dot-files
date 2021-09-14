@@ -101,12 +101,11 @@ Plug 'fatih/vim-go'
 let g:go_fmt_command = "goimports"
 au BufRead,BufNewFile *.gohtml set filetype=gohtmltmpl
 au BufRead,BufNewFile *.html set filetype=gohtmltmpl
+autocmd Filetype go set autoindent noexpandtab tabstop=4 shiftwidth=4
+let g:go_fmt_fail_silently = 1
 
 " Ale
 Plug 'dense-analysis/ale'
-
-" let g:ale_completion_enabled = 1
-" let g:ale_completion_autoimport = 1
 
 " CSS/SCSS
 Plug 'ap/vim-css-color'
@@ -125,9 +124,6 @@ hi MatchParen cterm=none ctermbg=cyan ctermfg=yellow
 let g:vimtex_compiler_latexmk = {
             \ 'build_dir' : 'output',
             \}
-
-" Go
-" autocmd Filetype go set autoindent noexpandtab tabstop=4 shiftwidth=4
 
 " Disable beeping
 set noerrorbells
