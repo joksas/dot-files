@@ -11,6 +11,7 @@ set laststatus=2
 set ruler
 set number relativenumber
 set linebreak
+set nofixendofline
 set noeol
 
 " Indent text on the same logical line
