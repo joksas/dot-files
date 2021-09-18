@@ -1,0 +1,19 @@
+#!/bin/sh
+
+num_working_wifi=$(awk -F "/" 'FNR==NR { wire[$5]++; next } { split(FILENAME, state, "/"); if (state[5] in wire && $1 == "up") print state[5]}' <(find /sys/class/net/*/wireless -type d) $(find /sys/class/net/*/operstate ! -type d) | wc -l)
+
+if [[ $num_working_wifi -eq 0 ]]; then
+  echo ""
+  return
+fi
+
+output=""
+
+vpn_status=$(nordvpn status | head -n 1)
+if [[ $vpn_status == *"Status: Connected"* ]]; then
+  output="$output "
+else
+  output="$output "
+fi
+
+echo $output

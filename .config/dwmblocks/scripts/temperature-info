@@ -1,6 +1,6 @@
 #!/bin/sh
 
-temp=$(sensors | awk '/Core 0/ {print $3}' | sed 's/+//g');
+temp=$(sensors | awk '/Composite/ {print $2}' | sed 's/+//g');
 temp=${temp%.*}
 
 if [ "$temp" -lt 75 ]

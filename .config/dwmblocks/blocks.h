@@ -2,7 +2,8 @@
 static const Block blocks[] = {
 	/*Icon*/	/*Command*/		/*Update Interval*/	/*Update Signal*/
 	{" ", "volume-info",					0,		10},
-	{"", "battery-info",					120,		0},
+//	{"", "battery-info",					120,		0},
+	{"", "internet",					10,		0},
 	{"", "temperature-info",				10,		0},
 	{"", "disk-info",					120,		0},
 	{"", "date-info",					180,		0},
