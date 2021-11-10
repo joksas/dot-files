@@ -13,6 +13,7 @@ set number relativenumber
 set linebreak
 set nofixendofline
 set noeol
+set iskeyword-=:
 
 " Indent text on the same logical line
 set breakindent
@@ -42,7 +43,30 @@ setlocal spell! spelllang=en_gb
 
 " Enable US English in Markdown files
 au BufNewFile,BufRead *.md setlocal spelllang=en_us
-" au BufRead,BufNewFile *.md set filetype=tex
+" https://stsievert.com/blog/2016/01/06/vim-jekyll-mathjax/
+function! MathAndLiquid()
+    "" Define certain regions
+    " Block math. Look for "$$[anything]$$"
+    syn region math start=/\$\$/ end=/\$\$/
+    " inline math. Look for "$[not $][anything]$"
+    syn match math_block '\$[^$].\{-}\$'
+
+    " Liquid single line. Look for "{%[anything]%}"
+    syn match liquid '{%.*%}'
+    " Liquid multiline. Look for "{%[anything]%}[anything]{%[anything]%}"
+    syn region highlight_block start='{% highlight .*%}' end='{%.*%}'
+    " Fenced code blocks, used in GitHub Flavored Markdown (GFM)
+    syn region highlight_block start='```' end='```'
+
+    "" Actually highlight those regions.
+    hi link math Statement
+    hi link liquid Statement
+    hi link highlight_block Function
+    hi link math_block Function
+endfunction
+" Call everytime we open a Markdown file
+autocmd BufRead,BufNewFile,BufEnter *.md,*.markdown call MathAndLiquid()
+
 
 " Toggle spell-check
 map <F1> :setlocal spell! spelllang=en_gb<CR>
@@ -80,10 +104,14 @@ Plug 'tpope/vim-surround'
 Plug 'lervag/vimtex'
 
 " R markdown
-Plug 'plasticboy/vim-markdown'
+Plug 'gabrielelana/vim-markdown'
 
 " Tables
 Plug 'godlygeek/tabular'
+
+" Ale
+Plug 'dense-analysis/ale'
+let g:ale_fixers = {}
 
 " Git
 Plug 'airblade/vim-gitgutter'
@@ -104,18 +132,31 @@ au BufRead,BufNewFile *.html set filetype=gohtmltmpl
 autocmd Filetype go set autoindent noexpandtab tabstop=4 shiftwidth=4
 let g:go_fmt_fail_silently = 1
 
-" Ale
-Plug 'dense-analysis/ale'
-
 " CSS/SCSS
 Plug 'ap/vim-css-color'
 
-call plug#end()
 
 set nofoldenable " disable folding
 set conceallevel=0
-" autocmd bufreadpre *.md setlocal ft=tex 
-" autocmd bufreadpre *.rmd setlocal ft=tex 
+
+" Python
+Plug 'heavenshell/vim-pydocstring'
+let g:pydocstring_doq_path = '~/.local/bin/doq'
+let g:pydocstring_templates_path = '~/.vim/templates/pydocstring'
+set rtp^=~/.vim/plugged/vim-pydocstring
+
+let g:ale_fixers['python'] = ['black', 'isort']
+
+call plug#end()
+
+" JavaScript
+let g:ale_fixers['javascript'] = ['eslint']
+
+" C
+let g:ale_fixers['c'] = ['astyle']
+let g:ale_fixers['cpp'] = ['astyle']
+
+let g:ale_fix_on_save = 1
 
 " Change MatchParen colours
 hi MatchParen cterm=none ctermbg=cyan ctermfg=yellow
@@ -136,7 +177,7 @@ hi Visual ctermfg=000 ctermbg=007 cterm=bold
 highlight LineNr ctermfg=015
 highlight CursorLineNr ctermfg=002 cterm=bold
 set cursorline
-highlight Cursorline ctermfg=none cterm=bold
+highlight Cursorline ctermfg=NONE ctermbg=016 cterm=NONE 
 highlight Comment ctermfg=015
 highlight Identifier ctermfg=012
 highlight Constant ctermfg=003
@@ -172,4 +213,4 @@ map <F10> :echo "hi<" . synIDattr(synID(line("."),col("."),1),"name") . '> trans
 \ . synIDattr(synIDtrans(synID(line("."),col("."),1)),"name") . ">"<CR>
 
 " Convert markdown files to pdf
-autocmd BufEnter,BufNew *.md map <F5> :!pandoc<space><C-r>%<space>-H<space>"/home/dovydas/.config/markdown-latex/base.sty"<space>-o<space><C-r>%<backspace><backspace>pdf<Enter>
+autocmd BufEnter,BufNew *.md map <F5> :!pandoc<space><C-r>%<space>-H<space>"/home/dovydas/.config/markdown-latex/base.sty"<space>--citeproc<space>-o<space><C-r>%<backspace><backspace>pdf<Enter>
