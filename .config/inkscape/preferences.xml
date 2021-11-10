@@ -125,8 +125,8 @@
          id="rect"
          style="fill:blue;"
          usecurrent="1"
-         width="170.398"
-         height="181.449" />
+         width="653.824"
+         height="872.042" />
       <eventcontext
          id="3dbox"
          style="stroke:none;stroke-linejoin:round;"
@@ -321,7 +321,8 @@
        show_sample_in_list="1"
        use_svg2="1"
        style="fill:black;fill-opacity:1;line-height:1.25;stroke:none;font-family:sans-serif;font-style:normal;font-weight:normal;font-size:40px;"
-       selcue="1" />
+       selcue="1"
+       align_mode="1" />
     <eventcontext
        id="nodes"
        selcue="1"
@@ -526,7 +527,7 @@
        panel_mode="1"
        panel_ratio="100"
        panel_wrap="0"
-       palette="LaTeX Beamer"
+       palette="okabe-ito.gpl"
        panel_border="0" />
   </group>
   <group
@@ -542,7 +543,8 @@
        id="textandfont" />
     <group
        id="transformation"
-       applyseparately="0" />
+       applyseparately="0"
+       rotateCounterClockwise="1" />
     <group
        id="align"
        align-to="0" />
@@ -582,7 +584,7 @@
        default="org.inkscape.output.pdf.cairorenderer"
        append_extension="1"
        enable_preview="1"
-       path="/home/dovydas/Desktop"
+       path="/home/dovydas/Documents/big-brother-watch/thermal-surveillance/predictive-power/figures"
        use_current_dir="1" />
     <group
        id="save_copy"
@@ -607,9 +609,19 @@
        id="debug"
        redirect="0" />
     <group
-       id="clonetiler" />
+       id="clonetiler"
+       jmax="10"
+       imax="1"
+       fillwidth="56.6929"
+       fillheight="56.6929"
+       shiftx_per_j="0"
+       shifty_per_j="10"
+       shiftx_per_i="10" />
     <group
-       id="gridtiler" />
+       id="gridtiler"
+       SpacingType="20"
+       VertAlign="1"
+       HorizAlign="1" />
     <group
        id="extension-error"
        show-on-startup="0" />
@@ -922,7 +934,8 @@
        theme="symbolic">
       <group
          id="shown"
-         ver1.1="1" />
+         ver1.1="1"
+         ver1.1.1="1" />
     </group>
     <group
        id="rendering" />
@@ -935,7 +948,7 @@
      org.inkscape.output.pdf.cairorenderer.PDFversion="PDF-1.5" />
   <group
      id="desktop"
-     style="-inkscape-font-specification:cmmi10;font-family:cmmi10;font-size:21.33333333px;fill:#cc79a7">
+     style="-inkscape-font-specification:cmr10;font-family:cmr10;font-size:53.33333333px;fill:#0072b2;stroke:#0072b2;stroke-width:3.77952756;text-anchor:middle;text-align:center;stroke-dasharray:22.67716535, 22.67716535">
     <group
        width="640"
        height="480"
