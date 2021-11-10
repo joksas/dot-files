@@ -3,7 +3,7 @@
 # Script for backing up files. Uses script from https://github.com/wolfv6/rclone_jobber. 
 
 source="~/Documents"
-dest="$USB/Backup/dovydas-at-archlinux/Documents"
+dest="/run/media/$USER/usb/Backup/$USER-at-archlinux/Documents"
 move_old_files_to="dated_files"
 
 rclone_jobber "$source" "$dest" "$move_old_files_to"
