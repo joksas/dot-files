@@ -144,7 +144,8 @@ trap 'printf "\033]0;%s\007" "${BASH_COMMAND//[^[:print:]]/}"' DEBUG
 # avoid loading default ranger config file
 export RANGER_LOAD_DEFAULT_RC=false
 
-# >>> conda initialize >>>
-. "/home/dovydas/.anaconda3/etc/profile.d/conda.sh"
-# <<< conda initialize <<<
+alias gitdot='git --git-dir ~/.dot-files/.git --work-tree=$HOME'
 
+alias memristors='source ~/.pyenvs/memristors/bin/activate'
+
+export TFDS_DATA_DIR="~/.tensorflow_datasets"
