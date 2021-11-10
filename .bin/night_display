@@ -1,4 +1,4 @@
 #!/bin/bash
 
 export DISPLAY=":0"
-xrandr --output DP-1 --brightness 0.5 --gamma 1.0:0.7:0.5
+xrandr --output DP-0 --brightness 0.5 --gamma 1.0:0.7:0.5
