@@ -13,7 +13,6 @@
 /.config/*
 !/.config/dunst
 !/.config/dwm
-!/.config/dwmblocks
 !/.config/ranger
 !/.config/markdown-latex
 
@@ -26,7 +25,7 @@
 !/.config/st
 /.config/st/*
 !/.config/st/patches
-!/.config/st/config.def.h
+!/.config/st/config.h
 !/.config/st/st.c
 
 !/.config/dwm
@@ -36,5 +35,15 @@
 !/.config/dwm/dwm.c
 !/.config/dwm/x.c
 
+!/.config/dwmblocks
+/.config/dwmblocks/*
+!/.config/dwm/blocks.h
+!/.config/dwm/dwmblocks.c
+!/.config/dwmblocks/scripts
+
+
+!/.config/inkscape
+
 *.swp
 
+*.log
