@@ -11,8 +11,6 @@ set laststatus=2
 set ruler
 set number relativenumber
 set linebreak
-set nofixendofline
-set noeol
 set iskeyword-=:
 
 " Indent text on the same logical line
@@ -86,13 +84,7 @@ execute "set <M-h>=\eh"
 " Specify a directory for plugins
 call plug#begin('~/.vim/plugged')
 
-" Try gaip=, where = is symbol around which one want to align
-" = can be preceded with the following:
-" = Around the 1st occurrences
-" 2= Around the 2nd occurrences
-" *= Around all occurrences
-" **= Left/Right alternating alignment around all occurrences
-" <Enter> Switching between left/right/center alignment modes
+" Spacing
 Plug 'junegunn/vim-easy-align'
 xmap ga <Plug>(EasyAlign)
 nmap ga <Plug>(EasyAlign)
@@ -206,6 +198,16 @@ highlight texMathZoneEnv ctermfg=003
 highlight texMathZoneX ctermfg=003
 
 set ttimeoutlen=0
+
+" Status line
+set statusline=
+set statusline +=%1*%<%t%*            "full path
+set statusline +=%1*\ %y%*            "file type
+set statusline +=%1*%m%*              "modified flag
+set statusline +=%1*%=%5l%*           "current line
+set statusline +=%1*/%L%*             "total lines
+set statusline +=%1*%4v\ %*           "virtual column number
+hi User1 ctermfg=000  ctermbg=011
 
 " See what highlight groups are used.
 map <F10> :echo "hi<" . synIDattr(synID(line("."),col("."),1),"name") . '> trans<'
