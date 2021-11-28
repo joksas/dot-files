@@ -9,9 +9,11 @@ fi
 
 output=""
 
-vpn_status=$(nordvpn status | head -n 1)
-if [[ $vpn_status == *"Status: Connected"* ]]; then
-  output="$output "
+vpn_status="$(nordvpn status)"
+status_line=$(echo "$vpn_status" | grep Status)
+if [[ $status_line == *"Status: Connected"* ]]; then
+  country=$(echo "$vpn_status" | grep "Current server:" | awk '{ print toupper($3) }' | head -c 2)
+  output="$output ($country)"
 else
   output="$output "
 fi
