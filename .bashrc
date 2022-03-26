@@ -43,7 +43,7 @@ esac
 # uncomment for a colored prompt, if the terminal has the capability; turned
 # off by default to not distract the user: the focus in a terminal window
 # should be on the output of commands, not on the prompt
-#force_color_prompt=yes
+force_color_prompt=yes
 
 if [ -n "$force_color_prompt" ]; then
     if [ -x /usr/bin/tput ] && tput setaf 1 >&/dev/null; then
@@ -116,8 +116,8 @@ if ! shopt -oq posix; then
   fi
 fi
 
-# default editor is vim
-VISUAL=vim; export VISUAL EDITOR=vim; export EDITOR
+# default editor is nvim
+VISUAL=nvim; export VISUAL EDITOR=nvim; export EDITOR
 
 # Python
 export PYENV_ROOT="$HOME/.pyenv/versions/3.8.7"
@@ -125,7 +125,7 @@ export PATH="$PYENV_ROOT/bin:$PATH"
 
 # add paths
 export GOPATH="$HOME/.go"
-export PATH=/bin:/usr/local/bin:$HOME/.bin:/sbin:/home/linuxbrew/.linuxbrew/bin:$GOPATH/bin:$HOME/.config/dwmblocks/scripts:$HOME/.bin/dart-sass:/usr/local/go/bin:/opt/texlive/2020/bin/x86_64-linux:/sbin/site_perl:$HOME/.local/bin
+export PATH=/bin:/usr/local/bin:$HOME/.bin:/sbin:/home/linuxbrew/.linuxbrew/bin:$GOPATH/bin:$HOME/.config/dwmblocks/scripts:$HOME/.bin/dart-sass:/usr/local/go/bin:/opt/texlive/2020/bin/x86_64-linux:/sbin/site_perl:$HOME/.local/bin:/bin/vendor_perl
 export PATH=/opt/cuda/bin${PATH:+:${PATH}}
 export LD_LIBRARY_PATH=/opt/cuda/lib64:$LD_LIBRARY_PATH
 export LD_LIBRARY_PATH=/opt/cuda/include:$LD_LIBRARY_PATH
@@ -149,3 +149,9 @@ alias gitdot='git --git-dir ~/.dot-files/.git --work-tree=$HOME'
 alias memristors='source ~/.pyenvs/memristors/bin/activate'
 
 export TFDS_DATA_DIR="~/.tensorflow_datasets"
+
+export NODE_PATH=/.node_modules
+export http_proxy=''
+export https_proxy=''
+export ftp_proxy=''
+export socks_proxy=''
