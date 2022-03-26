@@ -22,12 +22,6 @@
 /.config/GIMP/2.10/*
 !/.config/GIMP/2.10/scripts
 
-!/.config/st
-/.config/st/*
-!/.config/st/patches
-!/.config/st/config.h
-!/.config/st/st.c
-
 !/.config/dwm
 /.config/dwm/*
 !/.config/dwm/patches
