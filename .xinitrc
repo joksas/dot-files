@@ -12,5 +12,14 @@ fcitx &
 # dwm status bar
 dwmblocks 2>&1 >/dev/null &
 
+# Background
+feh --bg-fill --randomize ~/Pictures/backgrounds/* &
+
+# Window size
+export WINIT_HIDPI_FACTOR=1.0
+
+# Transparency
+picom --fade-in-step=0.04 --fade-out-step=0.04 &
+
 # Launch dwm
 exec dwm
