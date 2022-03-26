@@ -7,7 +7,7 @@ static const unsigned int gappx    = 7;        /* gap pixel between windows */
 static const unsigned int snap     = 32;       /* snap pixel */
 static const int showbar           = 1;        /* 0 means no bar */
 static const int topbar            = 1;        /* 0 means bottom bar */
-static const char *fonts[]         = {"Iosevka:size=14", "FontAwesome5Brands:size=14:antialias:true", "FontAwesome5Free:size=14:antialias:true", "FontAwesome5Free:style=Solid:size=14:antialias:true"};
+static const char *fonts[]         = {"Iosevka:size=14", "FontAwesome6Brands:size=14:antialias:true", "FontAwesome6Free:size=14:antialias:true", "FontAwesome6Free:style=Solid:size=14:antialias:true"};
 static const char dmenufont[]      = "Iosevka:size=14";
 static const char col_gray1[]      = "#222222";
 static const char col_gray2[]      = "#444444";
@@ -32,15 +32,16 @@ static const Rule rules[] = {
      *	WM_CLASS(STRING) = instance, class
      *	WM_NAME(STRING) = title
      */
-    /* class      instance    title       tags mask     isfloating   monitor */
-    { "Gimp",     NULL,       NULL,       0,            0,           -1 },
-    { "Brave-browser",  NULL,       NULL,       1 << 0,       0,           -1 },
-    { "st-256color",  NULL,       NULL,       1 << 1,       0,           -1 },
-    { "okular",  NULL,       NULL,       1 << 2,       0,           -1 },
-    { "zoom",  NULL,       NULL,       1 << 8,       0,           -1 },
-    { "Skype",  NULL,       NULL,       1 << 8,       0,           -1 },
-    { "Microsoft Teams - Preview",  NULL,       NULL,       1 << 8,       0,           -1 },
-    { "WxWabbitemu",     NULL,       NULL,       0,            1,           -1 },
+    /* class                       instance    title       tags mask     switchtotag isfloating   monitor */
+    {  "Gimp",                      NULL,       NULL,       0,           1,   0,          -1 },
+    {  "Brave-browser",             NULL,       NULL,       1 << 0,      1,   0,        -1 },
+    {  "Alacritty",               NULL,       NULL,       1 << 1,        1, 0,       -1 },
+    {  "okular",                    NULL,       NULL,       1 << 2,      1,   0,      -1 },
+    {  "zoom",                      NULL,       NULL,       1 << 8,      1,   0,     -1 },
+    {  "Skype",                     NULL,       NULL,       1 << 8,      1,   0,    -1 },
+    {  NULL,                        NULL,       "Signal",   1 << 4,      1,   0,   -1 },
+    {  "Microsoft Teams - Preview", NULL,       NULL,       1 << 8,      1,   0,  -1 },
+    {  "WxWabbitemu",               NULL,       NULL,       0,           1,   1, -1 },
 };
 
 /* layout(s) */
@@ -71,14 +72,14 @@ static const Layout layouts[] = {
 /* commands */
 static char dmenumon[2] = "0"; /* component of dmenucmd, manipulated in spawn() */
 static const char *dmenucmd[] = { "dmenu_run", "-m", dmenumon, "-fn", dmenufont, "-nb", col_dark_gray, "-nf", col_white, "-sb", col_white, "-sf", col_dark_gray, NULL };
-static const char *termcmd[]  = { "st", NULL };
+static const char *termcmd[]  = { "alacritty", NULL };
 
 static Key keys[] = {
     /* modifier                     key        function        argument */
     { MODKEY,                       XK_p,      spawn,          {.v = dmenucmd } },
     { MODKEY|ShiftMask,             XK_Return, spawn,          {.v = termcmd } },
-    { MODKEY|ShiftMask,             XK_r,      spawn,          SHCMD("st ranger") },
-    { MODKEY|ShiftMask,             XK_l,      spawn,          SHCMD("i3lock-fancy-dualmonitor") },
+    { MODKEY|ShiftMask,             XK_r,      spawn,          SHCMD("alacritty -e ranger") },
+    // { MODKEY|ShiftMask,             XK_l,      spawn,          SHCMD("i3lock-fancy-dualmonitor") },
     { MODKEY|ShiftMask,             XK_b,      spawn,          SHCMD("brave") },
     { MODKEY,                       XK_b,      togglebar,      {0} },
     { MODKEY,                       XK_j,      focusstack,     {.i = +1 } },
@@ -104,7 +105,7 @@ static Key keys[] = {
     { MODKEY,                       XK_period, focusmon,       {.i = +1 } },
     { MODKEY|ShiftMask,             XK_comma,  tagmon,         {.i = -1 } },
     { MODKEY|ShiftMask,             XK_period, tagmon,         {.i = +1 } },
-    { MODKEY,                       XK_u,      spawn,          SHCMD("udiskie-mount /dev/sdb1 && cd /run/media/dovydas && st ranger") },
+    { MODKEY,                       XK_u,      spawn,          SHCMD("udiskie-mount /dev/sdb1 && cd /run/media/dovydas && alacritty -e ranger") },
     { MODKEY|ShiftMask,             XK_u,      spawn,          SHCMD("udiskie-umount /dev/sdb1 && notify-send -t 3000 \"/dev/sdb1 unmounted\"") },
     { MODKEY,                       XK_Print,  spawn,          SHCMD("import png:- | xclip -selection clipboard -t image/png") },
     TAGKEYS(                        XK_1,                      0)
