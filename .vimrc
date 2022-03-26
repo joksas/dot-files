@@ -218,5 +218,8 @@ map <F10> :echo "hi<" . synIDattr(synID(line("."),col("."),1),"name") . '> trans
 " Convert markdown files to pdf
 autocmd BufEnter,BufNew *.md map <F5> :!pandoc<space><C-r>%<space>-H<space>"/home/dovydas/.config/markdown-latex/base.sty"<space>--citeproc<space>-o<space><C-r>%<backspace><backspace>pdf<Enter>
 
+" Format BibTeX files
+autocmd BufWritePost *.bib execute '!biber --tool --output-indent=2 --output-align --output-fieldcase=lower --output-format=bibtex --nolog --output-file=%:p %:p' | e
+
 " https://github.com/neovim/neovim/issues/11330#issuecomment-723667383
 autocmd VimEnter * :silent exec "!kill -s SIGWINCH $PPID"
