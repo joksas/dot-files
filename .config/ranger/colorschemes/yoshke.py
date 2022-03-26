@@ -1,5 +1,6 @@
-from ranger.gui.colorscheme import ColorScheme
 from ranger.gui.color import *
+from ranger.gui.colorscheme import ColorScheme
+
 
 class base(ColorScheme):
     progress_bar_color = 1
@@ -32,10 +33,10 @@ class base(ColorScheme):
                 attr |= bold
                 fg = 1
             if context.directory:
-                fg = 4
-            elif context.executable and not \
-                    any((context.media, context.container,
-                       context.fifo, context.socket)):
+                fg = 12
+            elif context.executable and not any(
+                (context.media, context.container, context.fifo, context.socket)
+            ):
                 attr |= bold
                 fg = 1
             if context.socket:
@@ -71,7 +72,7 @@ class base(ColorScheme):
             if context.hostname:
                 fg = context.bad and 8 or 7
             elif context.directory:
-                fg = 4
+                fg = 12
             elif context.tab:
                 if context.good:
                     attr |= bold
@@ -101,7 +102,6 @@ class base(ColorScheme):
                 fg = 5
                 attr &= ~bold
 
-
         if context.text:
             if context.highlight:
                 attr |= reverse
@@ -118,7 +118,6 @@ class base(ColorScheme):
                     fg = self.progress_bar_color
                 else:
                     bg = self.progress_bar_color
-
 
         if context.vcsfile and not context.selected:
             attr &= ~bold
