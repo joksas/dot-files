@@ -22,6 +22,8 @@
 /.config/GIMP/2.10/*
 !/.config/GIMP/2.10/scripts
 
+!/.config/alacritty
+
 !/.config/dwm
 /.config/dwm/*
 !/.config/dwm/patches
