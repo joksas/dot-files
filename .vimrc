@@ -29,12 +29,9 @@ set sw=2
 set iskeyword+=:
 
 " Alt+X, Alt+C and Alt+V bindings:
-execute "set <M-x>=\ex"
-vnoremap <M-x> "+d
-execute "set <M-c>=\ec"
-vnoremap <M-c> "+y
-execute "set <M-v>=\ev"
-map <M-v> "+P
+vnoremap <A-x> "+d
+vnoremap <A-c> "+y
+map <A-v> "+P
 
 " Enable spell-check by default
 setlocal spell! spelllang=en_gb
@@ -72,14 +69,10 @@ map <F2> :setlocal spell! spelllang=en_us<CR>
 map <F3> :setlocal spell! spelllang=lt<CR>
 
 " Remap keys for moving in visual lines
-execute "set <M-j>=\ej"
-:noremap <M-j> gj
-execute "set <M-k>=\ek"
-:noremap <M-k> gk
-execute "set <M-l>=\el"
-:noremap <M-l> g$
-execute "set <M-h>=\eh"
-:noremap <m-h> g0
+:noremap <A-j> gj
+:noremap <A-k> gk
+:noremap <A-l> g$
+:noremap <A-h> g0
 
 " Specify a directory for plugins
 call plug#begin('~/.vim/plugged')
@@ -96,7 +89,9 @@ Plug 'tpope/vim-surround'
 Plug 'lervag/vimtex'
 
 " R markdown
-Plug 'gabrielelana/vim-markdown'
+" Plug 'gabrielelana/vim-markdown'
+Plug 'vim-pandoc/vim-pandoc-syntax'
+Plug 'vim-pandoc/vim-pandoc'
 
 " Tables
 Plug 'godlygeek/tabular'
@@ -117,12 +112,15 @@ highlight  GitGutterChange ctermfg=4
 au BufRead,BufNewFile *.json.log set filetype=json
 
 " Go
-Plug 'fatih/vim-go'
-let g:go_fmt_command = "goimports"
-au BufRead,BufNewFile *.gohtml set filetype=gohtmltmpl
-au BufRead,BufNewFile *.html set filetype=gohtmltmpl
+au BufRead,BufNewFile *.gohtml set filetype=gohtmltmpl.html
+au BufRead,BufNewFile *.html set filetype=gohtmltmpl.html
 autocmd Filetype go set autoindent noexpandtab tabstop=4 shiftwidth=4
+Plug 'fatih/vim-go', { 'do': ':GoUpdateBinaries' }
 let g:go_fmt_fail_silently = 1
+
+" Rust
+Plug 'rust-lang/rust.vim'
+let g:rustfmt_autosave = 1
 
 " CSS/SCSS
 Plug 'ap/vim-css-color'
@@ -130,6 +128,8 @@ Plug 'ap/vim-css-color'
 
 set nofoldenable " disable folding
 set conceallevel=0
+
+Plug 'github/copilot.vim'
 
 " Python
 Plug 'heavenshell/vim-pydocstring'
@@ -143,6 +143,7 @@ call plug#end()
 
 " JavaScript
 let g:ale_fixers['javascript'] = ['eslint']
+Plug 'maxmellon/vim-jsx-pretty'
 
 " C
 let g:ale_fixers['c'] = ['astyle']
@@ -151,7 +152,7 @@ let g:ale_fixers['cpp'] = ['astyle']
 let g:ale_fix_on_save = 1
 
 " Change MatchParen colours
-hi MatchParen cterm=none ctermbg=cyan ctermfg=yellow
+hi MatchParen cterm=bold ctermbg=none ctermfg=none
 
 " Change location of vimtex build
 let g:vimtex_compiler_latexmk = {
@@ -165,39 +166,37 @@ set vb t_vb=
 " Highlight colors
 
 " General
-hi Visual ctermfg=000 ctermbg=007 cterm=bold
-highlight LineNr ctermfg=015
-highlight CursorLineNr ctermfg=002 cterm=bold
+highlight CursorLineNr ctermfg=000 ctermbg=003 cterm=bold
 set cursorline
-highlight Cursorline ctermfg=NONE ctermbg=016 cterm=NONE 
-highlight Comment ctermfg=015
-highlight Identifier ctermfg=012
-highlight Constant ctermfg=003
-highlight PreProc ctermfg=012
-highlight Title ctermfg=003
-highlight Statement ctermfg=004
-highlight ErrorMsg ctermfg=007 ctermbg=009
-highlight Search ctermfg=000 ctermbg=003
+highlight Cursorline ctermfg=NONE cterm=NONE 
+""" highlight Comment ctermfg=011
+""" highlight Identifier ctermfg=012
+""" highlight Constant ctermfg=003
+""" highlight PreProc ctermfg=012
+""" highlight Title ctermfg=003
+""" highlight Statement ctermfg=004
+""" highlight ErrorMsg ctermfg=007 ctermbg=009
+""" highlight Search ctermfg=000 ctermbg=003
 
 " Autocomplete menu
-highlight Pmenu ctermfg=007 ctermbg=008
-highlight PmenuSel ctermfg=000 ctermbg=004
+highlight Pmenu ctermfg=015 ctermbg=008
+highlight PmenuSel ctermfg=000 ctermbg=015
 
 " Spelling
-hi SpellBad    ctermfg=009      ctermbg=000     cterm=underline
-hi SpellCap    ctermfg=009      ctermbg=007     cterm=none
-hi SpellLocal  ctermfg=001      ctermbg=000
-hi SpellRare   ctermfg=007      ctermbg=012     cterm=none
+hi SpellBad    ctermfg=001      ctermbg=000     cterm=underline
+hi SpellCap    ctermfg=001      ctermbg=007     cterm=none
+hi SpellLocal  ctermfg=009      ctermbg=000
+hi SpellRare   ctermfg=015      ctermbg=012     cterm=none
 
-" LaTeX
-highlight texCmd ctermfg=012
-highlight texArg ctermfg=001
-highlight texMathArg ctermfg=003
-highlight texMathGroup ctermfg=003
-highlight texMathZoneEnv ctermfg=003
-highlight texMathZoneX ctermfg=003
-
-set ttimeoutlen=0
+""" " LaTeX
+""" highlight texCmd ctermfg=004
+""" highlight texArg ctermfg=009
+""" highlight texMathArg ctermfg=011
+""" highlight texMathGroup ctermfg=011
+""" highlight texMathZoneEnv ctermfg=011
+""" highlight texMathZoneX ctermfg=011
+""" 
+""" set ttimeoutlen=0
 
 " Status line
 set statusline=
@@ -209,6 +208,8 @@ set statusline +=%1*/%L%*             "total lines
 set statusline +=%1*%4v\ %*           "virtual column number
 hi User1 ctermfg=000  ctermbg=011
 
+let g:vimtex_compiler_latexmk = {'build_dir' : '.aux'}
+
 " See what highlight groups are used.
 map <F10> :echo "hi<" . synIDattr(synID(line("."),col("."),1),"name") . '> trans<'
 \ . synIDattr(synID(line("."),col("."),0),"name") . "> lo<"
@@ -216,3 +217,6 @@ map <F10> :echo "hi<" . synIDattr(synID(line("."),col("."),1),"name") . '> trans
 
 " Convert markdown files to pdf
 autocmd BufEnter,BufNew *.md map <F5> :!pandoc<space><C-r>%<space>-H<space>"/home/dovydas/.config/markdown-latex/base.sty"<space>--citeproc<space>-o<space><C-r>%<backspace><backspace>pdf<Enter>
+
+" https://github.com/neovim/neovim/issues/11330#issuecomment-723667383
+autocmd VimEnter * :silent exec "!kill -s SIGWINCH $PPID"
