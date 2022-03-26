@@ -108,7 +108,7 @@ elif [ "$move_old_files_to" != "" ]; then
 fi
 
 ################################### back up ##################################
-cmd="rclone sync $source $dest/$new $backup_dir $log_option $options"
+cmd="rclone sync --ignore-errors $source $dest/$new $backup_dir $log_option $options"
 
 # progress message
 echo "Back up in progress $timestamp $job_name"
