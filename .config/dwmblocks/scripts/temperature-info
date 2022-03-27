@@ -1,13 +1,17 @@
 #!/bin/sh
 
-temp=$(sensors | awk '/Composite/ {print $2}' | sed 's/+//g');
-temp=${temp%.*}
+temperature=$(sensors | awk '/Composite/ {print $2}' | sed 's/+//g');
+if [ -z "$temperature" ]
+then
+  temperature=$(sensors | awk '/CPU/ {print $2}' | sed 's/+//g');
+fi
+temperature=${temperature%.*}
 
-if [ "$temp" -lt 75 ]
+if [ "$temperature" -lt 75 ]
 then
   icon=""
 else
   icon=""
 fi
 
-echo "$icon $temp°C"
+echo "$icon $temperature°C"
