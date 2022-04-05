@@ -216,7 +216,7 @@ map <F10> :echo "hi<" . synIDattr(synID(line("."),col("."),1),"name") . '> trans
 \ . synIDattr(synIDtrans(synID(line("."),col("."),1)),"name") . ">"<CR>
 
 " Convert markdown files to pdf
-autocmd BufEnter,BufNew *.md map <F5> :!pandoc<space><C-r>%<space>-H<space>"/home/dovydas/.config/markdown-latex/base.sty"<space>--citeproc<space>-o<space><C-r>%<backspace><backspace>pdf<Enter>
+autocmd BufEnter,BufNew *.md map <F5> :!pandoc<space><C-r>%<space>-H<space>"/home/dovydas/.config/markdown-latex/base.sty"<space>-V<space>fontsize=12pt<space>--citeproc<space>-o<space><C-r>%<backspace><backspace>pdf<Enter>
 
 " Format BibTeX files
 autocmd BufWritePost *.bib execute '!biber --tool --output-indent=2 --output-align --output-fieldcase=lower --output-format=bibtex --nolog --output-file=%:p %:p' | e
