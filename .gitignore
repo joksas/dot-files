@@ -44,6 +44,12 @@
 
 *.log
 
+# Neovim
+!/.config/nvim
+/.config/nvim/*
+!/.config/nvim/init.lua
+!/.config/nvim/lua
+
 ### PYTHON
 
 # Byte-compiled / optimized / DLL files
