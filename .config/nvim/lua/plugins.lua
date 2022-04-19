@@ -11,8 +11,13 @@ return require('packer').startup(function()
   use 'vim-pandoc/vim-pandoc'
   use 'vim-pandoc/vim-pandoc-syntax'
   use 'lervag/vimtex'
+  -- use 'fatih/vim-go'
 
   -- Other tools
+  use {
+    'nvim-treesitter/nvim-treesitter',
+    run = ':TSUpdate',
+  }
   use 'github/copilot.vim'
   use 'tpope/vim-surround'
   use 'airblade/vim-gitgutter'
