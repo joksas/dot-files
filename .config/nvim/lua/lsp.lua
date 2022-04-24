@@ -1,6 +1,6 @@
 -- Mappings.
 -- See `:help vim.diagnostic.*` for documentation on any of the below functions
-local opts = { noremap=true, silent=true }
+local opts = { noremap = true, silent = true }
 vim.api.nvim_set_keymap('n', '<space>e', '<cmd>lua vim.diagnostic.open_float()<CR>', opts)
 vim.api.nvim_set_keymap('n', '[d', '<cmd>lua vim.diagnostic.goto_prev()<CR>', opts)
 vim.api.nvim_set_keymap('n', ']d', '<cmd>lua vim.diagnostic.goto_next()<CR>', opts)
@@ -29,23 +29,23 @@ local on_attach = function(client, bufnr)
   vim.api.nvim_buf_set_keymap(bufnr, 'n', '<space>f', '<cmd>lua vim.lsp.buf.formatting()<CR>', opts)
 end
 
-lspconfig = require "lspconfig"
-util = require "lspconfig/util"
+local lspconfig = require "lspconfig"
+local util = require "lspconfig/util"
 
 -- Go
-lspconfig.gopls.setup{
+lspconfig.gopls.setup {
   on_attach = on_attach,
-  cmd = {"gopls", "serve"},
-  filetypes = {"go", "gomod"},
+  cmd = { "gopls", "serve" },
+  filetypes = { "go", "gomod" },
   root_dir = util.root_pattern("go.work", "go.mod", ".git"),
   settings = {
     gopls = {
       analyses = {
-	nilness = true,
-	shadow = true,
-	unusedparams = true,
-	unusedwrite = true,
-	useany = true,
+        nilness = true,
+        shadow = true,
+        unusedparams = true,
+        unusedwrite = true,
+        useany = true,
       },
       staticcheck = true,
       gofumpt = true,
@@ -54,3 +54,25 @@ lspconfig.gopls.setup{
 }
 vim.api.nvim_buf_set_option(0, 'omnifunc', 'v:lua.vim.lsp.omnifunc')
 vim.api.nvim_exec([[ autocmd BufWritePre *.go lua vim.lsp.buf.formatting() ]], false)
+
+-- Lua
+local runtime_path = vim.split(package.path, ';')
+table.insert(runtime_path, "lua/?.lua")
+table.insert(runtime_path, "lua/?/init.lua")
+lspconfig.sumneko_lua.setup {
+  settings = {
+    Lua = {
+      runtime = {
+        version = 'LuaJIT',
+        path = runtime_path,
+      },
+      diagnostics = {
+        globals = { 'vim' },
+      },
+      workspace = {
+        library = vim.api.nvim_get_runtime_file("", true),
+      },
+    },
+  },
+}
+vim.api.nvim_command [[autocmd BufWritePre <buffer> lua vim.lsp.buf.formatting_sync()]]

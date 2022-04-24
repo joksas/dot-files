@@ -12,13 +12,14 @@ vim.opt.number = true
 vim.opt.relativenumber = true
 vim.opt.linebreak = true
 vim.opt.breakindent = true
-vim.opt.iskeyword:remove {":"}
+vim.opt.iskeyword:remove { ":" }
 
-vim.opt.wildmode = {"longest", "list", "full"}
+vim.opt.wildmode = { "longest", "list", "full" }
 vim.opt.omnifunc = "syntaxcomplete#Complete"
-vim.opt.completeopt:remove {"preview"}
+vim.opt.completeopt:remove { "preview" }
 
 vim.opt.filetype.indent = true
+vim.opt.expandtab = true
 vim.opt.sw = 2
 vim.opt.updatetime = 100
 
@@ -60,12 +61,12 @@ vim.diagnostic.config({
 
 -- Status line
 vim.opt.statusline = ""
-vim.opt.statusline:append "%1*%<%t%*"  -- filename
-vim.opt.statusline:append "%1* %y%*"  -- file type
-vim.opt.statusline:append "%1*%m%*"  -- modified flag
-vim.opt.statusline:append "%1*%=%5l%*"  -- current line
-vim.opt.statusline:append "%1*/%L%*"  -- total lines
-vim.opt.statusline:append "%1*%4v %*"  -- virtual column number
+vim.opt.statusline:append "%1*%<%t%*" -- filename
+vim.opt.statusline:append "%1* %y%*" -- file type
+vim.opt.statusline:append "%1*%m%*" -- modified flag
+vim.opt.statusline:append "%1*%=%5l%*" -- current line
+vim.opt.statusline:append "%1*/%L%*" -- total lines
+vim.opt.statusline:append "%1*%4v %*" -- virtual column number
 
 require('lint').linters_by_ft = {
   tex = {
@@ -87,12 +88,12 @@ require("nvim-treesitter.configs").setup({
   },
 })
 
-local parser_config = require'nvim-treesitter.parsers'.get_parser_configs()
+local parser_config = require 'nvim-treesitter.parsers'.get_parser_configs()
 parser_config.gotmpl = {
   install_info = {
     url = "https://github.com/ngalaiko/tree-sitter-go-template",
-    files = {"src/parser.c"}
+    files = { "src/parser.c" }
   },
   filetype = "gotmpl",
-  used_by = {"gohtmltmpl", "gotexttmpl", "gotmpl", "yaml"}
+  used_by = { "gohtmltmpl", "gotexttmpl", "gotmpl", "yaml" }
 }
