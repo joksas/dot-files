@@ -4,6 +4,7 @@ vim.opt.ignorecase = true
 vim.opt.smartcase = true
 vim.opt.display:append { "lastline" }
 vim.opt.syntax = "enable"
+vim.opt.compatible = false
 vim.opt.wrap = true
 vim.opt.laststatus = 2
 vim.opt.ruler = true
