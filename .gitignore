@@ -39,6 +39,8 @@
 
 
 !/.config/inkscape
+/.config/inkscape/*
+!/.config/palettes
 
 *.swp
 
