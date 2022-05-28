@@ -1,7 +1,7 @@
 require('packer').startup(function()
   -- Neovim infrastructure
   use 'wbthomason/packer.nvim'
-  use 'neovim/nvim-lspconfig'
+  use "neovim/nvim-lspconfig"
   use 'mfussenegger/nvim-lint'
 
   -- Display
@@ -11,7 +11,7 @@ require('packer').startup(function()
   use 'vim-pandoc/vim-pandoc'
   use 'vim-pandoc/vim-pandoc-syntax'
   use 'lervag/vimtex'
-  -- use 'fatih/vim-go'
+  use { 'fatih/vim-go', ft = 'gohtmltmpl' }
 
   -- Other tools
   use {
@@ -22,6 +22,7 @@ require('packer').startup(function()
   use 'tpope/vim-surround'
   use 'airblade/vim-gitgutter'
   use 'vimwiki/vimwiki'
+  -- use 'tools-life/taskwiki'
 end)
 
 vim.g.vimwiki_list = {

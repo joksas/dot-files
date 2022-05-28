@@ -78,9 +78,10 @@ static Key keys[] = {
     /* modifier                     key        function        argument */
     { MODKEY,                       XK_p,      spawn,          {.v = dmenucmd } },
     { MODKEY|ShiftMask,             XK_Return, spawn,          {.v = termcmd } },
-    { MODKEY|ShiftMask,             XK_r,      spawn,          SHCMD("alacritty -e ranger") },
+    { MODKEY|ShiftMask,             XK_r,      spawn,          SHCMD("alacritty -e bash -i -c ranger") },
     // { MODKEY|ShiftMask,             XK_l,      spawn,          SHCMD("i3lock-fancy-dualmonitor") },
     { MODKEY|ShiftMask,             XK_b,      spawn,          SHCMD("brave") },
+    { MODKEY|ShiftMask,             XK_x,      spawn,          SHCMD("i3lock") },
     { MODKEY,                       XK_b,      togglebar,      {0} },
     { MODKEY,                       XK_j,      focusstack,     {.i = +1 } },
     { MODKEY,                       XK_k,      focusstack,     {.i = -1 } },

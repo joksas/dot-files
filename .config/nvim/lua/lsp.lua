@@ -55,6 +55,26 @@ lspconfig.gopls.setup {
 vim.api.nvim_buf_set_option(0, 'omnifunc', 'v:lua.vim.lsp.omnifunc')
 vim.api.nvim_exec([[ autocmd BufWritePre *.go lua vim.lsp.buf.formatting() ]], false)
 
+function OrgImports(wait_ms)
+  local params = vim.lsp.util.make_range_params()
+  params.context = { only = { "source.organizeImports" } }
+  local result = vim.lsp.buf_request_sync(0, "textDocument/codeAction", params, wait_ms)
+  for _, res in pairs(result or {}) do
+    for _, r in pairs(res.result or {}) do
+      if r.edit then
+        vim.lsp.util.apply_workspace_edit(r.edit, "UTF-8")
+      else
+        vim.lsp.buf.execute_command(r.command)
+      end
+    end
+  end
+end
+
+vim.api.nvim_exec([[ autocmd BufWritePre *.go lua OrgImports(1000) ]], false)
+
+-- Rust
+lspconfig.rust_analyzer.setup {}
+
 -- Lua
 local runtime_path = vim.split(package.path, ';')
 table.insert(runtime_path, "lua/?.lua")
@@ -76,3 +96,63 @@ lspconfig.sumneko_lua.setup {
   },
 }
 vim.api.nvim_command [[autocmd BufWritePre <buffer> lua vim.lsp.buf.formatting_sync()]]
+
+-- Python
+lspconfig.pylsp.setup {
+  on_attach = on_attach,
+}
+-- vim.api.nvim_command [[autocmd BufWritePre <buffer> python vim.lsp.buf.formatting_sync()]]
+
+-- Grammar
+lspconfig.ltex.setup {}
+
+-- JS
+lspconfig.diagnosticls.setup {
+  filetypes = { 'javascript', 'javascriptreact', 'typescript', 'typescriptreact' },
+  init_options = {
+    linters = {
+      eslint = {
+        command = 'eslint',
+        rootPatterns = { '.git' },
+        debounce = 100,
+        args = { '--stdin', '--stdin-filename', '%filepath', '--format', 'json' },
+        sourceName = 'eslint',
+        parseJson = {
+          errorsRoot = '[0].messages',
+          line = 'line',
+          column = 'column',
+          endLine = 'endLine',
+          endColumn = 'endColumn',
+          message = '[eslint] ${message} [${ruleId}]',
+          security = 'severity'
+        },
+        securities = {
+          [2] = 'error',
+          [1] = 'warning'
+        }
+      },
+    },
+    filetypes = {
+      javascript = 'eslint',
+      javascriptreact = 'eslint',
+      typescript = 'eslint',
+      typescriptreact = 'eslint',
+    },
+    formatters = {
+      prettier = {
+        command = 'prettier',
+        args = { '--stdin-filepath', '%filename' }
+      }
+    },
+    formatFiletypes = {
+      javascript = 'prettier',
+      javascriptreact = 'prettier',
+      json = 'prettier',
+      typescript = 'prettier',
+      typescriptreact = 'prettier'
+    }
+  }
+}
+
+-- TOML
+lspconfig.taplo.setup {}

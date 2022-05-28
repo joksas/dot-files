@@ -10,10 +10,13 @@ export XMODIFIERS=@im=fcitx
 fcitx &
 
 # dwm status bar
-dwmblocks 2>&1 >/dev/null &
+dwmbar 2>&1 > /dev/null &
 
 # Background
 feh --bg-fill --randomize ~/Pictures/backgrounds/* &
+
+# Layouts
+setxkbmap -layout gb,lt -option grp:alt_shift_toggle
 
 # Window size
 export WINIT_HIDPI_FACTOR=1.0

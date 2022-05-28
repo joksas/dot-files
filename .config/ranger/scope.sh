@@ -80,7 +80,7 @@ handle_extension() {
             exit 1;;
 
         ## OpenDocument
-        odt|ods|odp|sxw)
+        odt|odp|sxw)
             ## Preview as text conversion
             odt2txt "${FILE_PATH}" && exit 5
             ## Preview as markdown conversion
