@@ -1,5 +1,7 @@
 ! 1.75 scaling
-Xft.dpi: 168
+! Xft.dpi: 168
+! 1.00 scaling
+Xft.dpi: 96
 
 ! Use a nice truetype font and size by default... 
 xterm*faceName: DejaVu Sans Mono Book
