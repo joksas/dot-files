@@ -2,15 +2,17 @@
 
 \usepackage[onehalfspacing]{setspace}
 
+% Font
+\setmainfont{Roboto Light}
+
+\usepackage{enumitem}
 % Removes spaces between items in a list and between the list and the text above and below it.
-\usepackage[shortlabels]{enumitem}
 \setlist[itemize]{nolistsep}
 \setlist[enumerate]{nolistsep}
 
 \usepackage{xcolor}
 \definecolor{blue}{RGB}{0, 114, 178}
 \definecolor{vermilion}{RGB}{213, 94, 0}
-\definecolor{black}{RGB}{0, 0, 0}
 
 % Hyperlinks and their colours:
 \usepackage{hyperref}
@@ -22,13 +24,21 @@
   urlcolor=blue
 }
 
-\usepackage{listings}
-\lstset{%
-  language=[LaTeX]TeX,
-  breaklines=true,
-  basicstyle=\tt,
-  keywordstyle=\color{blue},
-  identifierstyle=\color{vermilion},
-}
-
 \usepackage{commath}
+
+\usepackage{soul}
+\usepackage{todonotes}
+\newcommand\inlinecomment[3]{%
+  \textcolor{#1}{[\textbf{#2:} #3]}%
+}
+\newcommand\modification[3]{%
+  \textcolor{#1}{\st{#2}#3}%
+}
+\newcommand\dovydas[1]{\inlinecomment{vermilion}{Dovydas}{#1}}
+\newcommand\dovydasc[2]{\modification{vermilion}{#1}{#2}}
+
+\let\oldquote=\quote
+\let\endoldquote=\endquote
+\renewenvironment{quote}{\begin{tabular}{|p{0.9\linewidth}}}{\end{tabular}}
+
+\usepackage{ellipsis}
