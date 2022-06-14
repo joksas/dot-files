@@ -22,7 +22,6 @@ require('packer').startup(function()
   use 'tpope/vim-surround'
   use 'airblade/vim-gitgutter'
   use 'vimwiki/vimwiki'
-  -- use 'tools-life/taskwiki'
 end)
 
 vim.g.vimwiki_list = {

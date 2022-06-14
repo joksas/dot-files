@@ -2,7 +2,7 @@ vim.opt.termguicolors = true
 
 vim.cmd("colorscheme jellybeans")
 
-local black   = '#2d2d2d'
+local black   = '#202020'
 local red     = '#f2777a'
 local green   = '#99cc99'
 local yellow  = '#ffcc66'
@@ -43,3 +43,20 @@ vim.highlight.create("Search", { ctermfg = 1, ctermbg = 3, cterm = "none", guifg
 
 -- Status line
 vim.highlight.create("User1", { ctermfg = 0, guifg = black, ctermbg = 11, guibg = yellow }, false)
+
+-- Transparent background
+vim.api.nvim_set_hl(0, "CursorLine", {})
+vim.highlight.create("Normal", { ctermbg = "none", guibg = "none" })
+vim.highlight.create("LineNr", { ctermbg = "none", guibg = "none", guifg = "gray" })
+vim.highlight.create("Folded", { ctermbg = "none", guibg = "none" })
+vim.highlight.create("NonText", { ctermbg = "none", guibg = "none", guifg = "gray" })
+vim.wo.fillchars = "eob: "
+vim.highlight.create("SpecialKey", { ctermbg = "none", guibg = "none" })
+vim.highlight.create("VertSplit", { ctermbg = "none", guibg = "none" })
+vim.highlight.create("SignColumn", { ctermbg = "none", guibg = "none" })
+
+vim.highlight.create("Normal", { guibg = "none", ctermbg = "none" })
+vim.highlight.create("CursorColumn", { cterm = "none", ctermbg = "none", ctermfg = "none", guibg = black })
+vim.highlight.create("CursorLine", { cterm = "none", ctermbg = "none", ctermfg = "none", guibg = black })
+vim.highlight.create("CursorLineNr", { cterm = "none", ctermbg = "none", guibg = black, ctermfg = "yellow", guifg = yellow })
+vim.api.nvim_set_hl(0, "StatusLine", {})

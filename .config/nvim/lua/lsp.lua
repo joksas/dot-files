@@ -73,7 +73,19 @@ end
 vim.api.nvim_exec([[ autocmd BufWritePre *.go lua OrgImports(1000) ]], false)
 
 -- Rust
-lspconfig.rust_analyzer.setup {}
+lspconfig.rust_analyzer.setup {
+  settings = {
+    ['rust-analyzer'] = {
+      checkOnSave = {
+        allFeatures = true,
+        overrideCommand = {
+          'cargo', 'clippy', '--workspace', '--message-format=json',
+          '--all-targets', '--all-features'
+        }
+      }
+    }
+  }
+}
 
 -- Lua
 local runtime_path = vim.split(package.path, ';')
