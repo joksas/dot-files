@@ -2,6 +2,7 @@ GIMP Palette
 Name: okabe-ito.gpl
 #
   0   0   0 #000000
+255 255 255 #FFFFFF
   0 114 178 #0072B2
   0 158 115 #009E73
  86 180 233 #56B4E9
