@@ -3,7 +3,38 @@
 \usepackage[onehalfspacing]{setspace}
 
 % Font
-\setmainfont{Roboto Light}
+%%% to allow custom headings
+\usepackage{titlesec}
+%%% to change titles font family
+\usepackage{titling}
+
+
+%%% declare fonts and set some formats
+%%% fontspec to use non-latex with xetex
+\usepackage{xunicode}
+\usepackage{fontspec}
+\usepackage{xltxtra}
+\setmainfont{Poppins Light}
+\newfontfamily\headingfont[]{Source Serif Pro Semibold}
+\setmonofont[Scale=1.0]{Source Code Pro}
+\definecolor{bgcode}{HTML}{eff0f1}
+\definecolor{fgcode}{HTML}{31363b}
+\let\oldtexttt\texttt
+
+\renewcommand{\texttt}[1]{
+  \colorbox{bgcode}{\color{fgcode}\oldtexttt{#1}}
+}
+
+%%% font declaration and title settings
+\renewcommand{\maketitlehooka}{\headingfont}
+\titleformat*{\section}{\LARGE\headingfont}
+\titleformat*{\subsection}{\Large\headingfont}
+\titleformat*{\subsubsection}{\large\headingfont}
+\titleformat{\paragraph}{\normalsize\headingfont}{\theparagraph}{1em}{}
+
+% Code wrapping
+\usepackage{fvextra}
+\DefineVerbatimEnvironment{Highlighting}{Verbatim}{breaklines,commandchars=\\\{\}}
 
 \usepackage{enumitem}
 % Removes spaces between items in a list and between the list and the text above and below it.
@@ -25,6 +56,7 @@
 }
 
 \usepackage{commath}
+\newcommand{\matr}[1]{\symbfit{#1}}
 
 \usepackage{soul}
 \usepackage{todonotes}
