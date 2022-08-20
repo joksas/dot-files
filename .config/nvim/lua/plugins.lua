@@ -2,7 +2,7 @@ require('packer').startup(function()
   -- Neovim infrastructure
   use 'wbthomason/packer.nvim'
   use "neovim/nvim-lspconfig"
-  use 'mfussenegger/nvim-lint'
+  use 'hrsh7th/nvim-cmp' -- Autocompletion plugin
 
   -- Display
   use 'nanotech/jellybeans.vim'

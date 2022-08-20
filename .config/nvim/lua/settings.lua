@@ -40,7 +40,9 @@ map("n", "<A-k>", "gk", {})
 map("n", "<A-l>", "gl", {})
 map("n", "<A-h>", "gh", {})
 
-map("n", "<F10>", ':echo "hi<" . synIDattr(synID(line("."),col("."),1),"name") . ">trans<" . synIDattr(synID(line("."),col("."),0),"name") . "> lo<" . synIDattr(synIDtrans(synID(line("."),col("."),1)),"name") . ">"<CR>', {})
+map("n", "<F10>",
+  ':echo "hi<" . synIDattr(synID(line("."),col("."),1),"name") . ">trans<" . synIDattr(synID(line("."),col("."),0),"name") . "> lo<" . synIDattr(synIDtrans(synID(line("."),col("."),1)),"name") . ">"<CR>'
+  , {})
 
 -- Make nvim the right size when opening from Ranger.
 vim.api.nvim_exec([[ autocmd VimEnter * :silent exec "!kill -s SIGWINCH $PPID" ]], false)
@@ -61,11 +63,11 @@ vim.diagnostic.config({
 
 -- Status line
 vim.opt.statusline = ""
-vim.opt.statusline:append "%1*%<%t%*" -- filename
+vim.opt.statusline:append "%1*%<%F%*" -- filename
 vim.opt.statusline:append "%1* %y%*" -- file type
 vim.opt.statusline:append "%1*%m%*" -- modified flag
 vim.opt.statusline:append "%1*%=%5l%*" -- current line
-vim.opt.statusline:append "%1*/%L%*" -- total lines
+vim.opt.statusline:append "%1*/%L (%p%%)%*" -- total lines
 vim.opt.statusline:append "%1*%4v %*" -- virtual column number
 
 require('lint').linters_by_ft = {
