@@ -146,7 +146,8 @@ export RANGER_LOAD_DEFAULT_RC=false
 
 alias gitdot='git --git-dir ~/.dot-files/.git --work-tree=$HOME'
 
-alias memristors='source ~/.pyenvs/memristors/bin/activate'
+alias activate_memristors='source ~/.pyenvs/memristors/bin/activate'
+alias activate_jax='source ~/.pyenvs/jax/bin/activate'
 
 export TFDS_DATA_DIR="~/.tensorflow_datasets"
 
