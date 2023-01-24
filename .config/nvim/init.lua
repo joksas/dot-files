@@ -1,4 +1,3 @@
-require("plugins")
+require("default")
+require("copilot")
 require("settings")
-require("highlight")
-require("lsp")

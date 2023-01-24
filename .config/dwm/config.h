@@ -79,7 +79,6 @@ static Key keys[] = {
     { MODKEY,                       XK_p,      spawn,          {.v = dmenucmd } },
     { MODKEY|ShiftMask,             XK_Return, spawn,          {.v = termcmd } },
     { MODKEY|ShiftMask,             XK_r,      spawn,          SHCMD("alacritty -e bash -i -c ranger") },
-    // { MODKEY|ShiftMask,             XK_l,      spawn,          SHCMD("i3lock-fancy-dualmonitor") },
     { MODKEY|ShiftMask,             XK_b,      spawn,          SHCMD("brave") },
     { MODKEY|ShiftMask,             XK_x,      spawn,          SHCMD("i3lock") },
     { MODKEY,                       XK_b,      togglebar,      {0} },

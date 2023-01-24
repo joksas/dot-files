@@ -1,18 +1,9 @@
-vim.opt.autoindent = true
-vim.opt.hlsearch = true
-vim.opt.ignorecase = true
-vim.opt.smartcase = true
-vim.opt.display:append { "lastline" }
-vim.opt.syntax = "enable"
-vim.opt.compatible = false
-vim.opt.wrap = true
-vim.opt.laststatus = 2
-vim.opt.ruler = true
 vim.opt.number = true
 vim.opt.relativenumber = true
 vim.opt.linebreak = true
 vim.opt.breakindent = true
 vim.opt.iskeyword:remove { ":" }
+vim.opt.display:append { "lastline" }
 
 vim.opt.wildmode = { "longest", "list", "full" }
 vim.opt.omnifunc = "syntaxcomplete#Complete"
@@ -61,25 +52,109 @@ vim.diagnostic.config({
   severity_sort = true,
 })
 
--- Status line
-vim.opt.statusline = ""
-vim.opt.statusline:append "%1*%<%F%*" -- filename
-vim.opt.statusline:append "%1* %y%*" -- file type
-vim.opt.statusline:append "%1*%m%*" -- modified flag
-vim.opt.statusline:append "%1*%=%5l%*" -- current line
-vim.opt.statusline:append "%1*/%L (%p%%)%*" -- total lines
-vim.opt.statusline:append "%1*%4v %*" -- virtual column number
-
-require('lint').linters_by_ft = {
-  tex = {
-    'chktex',
-  },
-}
-vim.cmd [[ au BufWritePost <buffer> lua require('lint').try_lint() ]]
-
 vim.g.vimtex_compiler_latexmk = {
   build_dir = '.aux',
 }
 
 vim.cmd [[ au BufRead,BufNewFile *.gohtml set filetype=gohtmltmpl ]]
 vim.cmd [[ au BufRead,BufNewFile *.html set filetype=gohtmltmpl ]]
+
+local c = require('onedark.colors')
+
+-- Spelling
+vim.api.nvim_set_hl(0, "SpellBad",
+  { undercurl = true, fg = "none", bg = "none",
+    sp = c.red })
+vim.api.nvim_set_hl(0, "SpellCap",
+  { undercurl = true, fg = "none", bg = "none",
+    sp = c.yellow })
+vim.api.nvim_set_hl(0, "SpellLocal",
+  { undercurl = true, fg = "none", bg = "none",
+    sp = c.blue })
+vim.api.nvim_set_hl(0, "SpellRare", { fg = c.white, bg = c.blue, })
+
+local embedded_html = vim.treesitter.parse_query(
+  "rust",
+  [[
+(macro_invocation
+  (scoped_identifier
+    path: (identifier) @path (#eq? @path "leptos")
+    name: (identifier) @name (#eq? @name "view"))
+
+  (token_tree 
+      (_) @html
+    )
+  )
+  ]]
+)
+
+local get_root = function(bufnr)
+  local parser = vim.treesitter.get_parser(bufnr, "rust", {})
+  local tree = parser:parse()[1]
+  return tree:root()
+end
+
+local run_formatter = function(html)
+  local tmp = vim.fn.tempname()
+  vim.fn.writefile({ html }, tmp)
+
+  local cmd = "prettier --stdin-filepath index.html --parser html"
+  local formatted = vim.fn.system(cmd, html)
+
+  vim.fn.delete(tmp)
+
+  return vim.split(formatted, " ")
+end
+
+local format_dat_html = function(bufnr)
+  bufnr = bufnr or vim.api.nvim_get_current_buf()
+
+  if vim.bo[bufnr].filetype ~= "rust" then
+    vim.notify "can only be used in Rust"
+    return
+  end
+
+  local root = get_root(bufnr)
+
+  local changes = {}
+  for id, node in embedded_html:iter_captures(root, bufnr, 0, -1) do
+    local name = embedded_html.captures[id]
+    if name == "html" then
+      local range = { node:range() }
+      local indentation = vim.fn.indent(range[1])
+
+      local formatted = run_formatter(vim.treesitter.get_node_text(node, bufnr))
+
+      for idx, line in ipairs(formatted) do
+        formatted[idx] = indentation .. line
+      end
+
+      table.insert(changes, 1, {
+        start = range[1] + 1,
+        final = range[3],
+        formatted = formatted,
+      })
+    end
+  end
+
+  for _, change in ipairs(changes) do
+    vim.api.nvim_buf_set_lines(bufnr, change.start, change.final, false, change.formatted)
+  end
+end
+
+vim.api.nvim_create_user_command("FormatDatHtml", function()
+  format_dat_html()
+end, {})
+
+vim.g.vimwiki_list = {
+  {
+    path = '$HOME/Documents/wiki/',
+    syntax = 'markdown',
+    ext = '.md',
+    template_path = '$HOME/Documents/wiki/.templates',
+    template_default = 'default',
+    custom_wiki2html = 'vimwiki_markdown',
+  }
+}
+
+vim.g.vimwiki_table_mappings = 0

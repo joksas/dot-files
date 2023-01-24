@@ -8,24 +8,52 @@
 %%% to change titles font family
 \usepackage{titling}
 
+\usepackage[htt]{hyphenat}
+
+\usepackage[version=4]{mhchem}
+
 
 %%% declare fonts and set some formats
 %%% fontspec to use non-latex with xetex
 \usepackage{xunicode}
 \usepackage{fontspec}
 \usepackage{xltxtra}
-\setmainfont{Poppins Light}
+% \setmainfont{Poppins Light}
+\setmainfont{EB Garamond}
 \newfontfamily\headingfont[]{Source Serif Pro Semibold}
 \setmonofont[Scale=1.0]{Source Code Pro}
+
+\usepackage{xcolor}
+
 \definecolor{bgcode}{HTML}{eff0f1}
 \definecolor{fgcode}{HTML}{31363b}
 \let\oldtexttt\texttt
 
-\renewcommand{\texttt}[1]{
-  \colorbox{bgcode}{\color{fgcode}\oldtexttt{#1}}
+
+\newcommand*\justify{%
+  \fontdimen2\font=0.4em% interword space
+  \fontdimen3\font=0.2em% interword stretch
+  \fontdimen4\font=0.1em% interword shrink
+  \fontdimen7\font=0.1em% extra space
+  \hyphenchar\font=`\-% allowing hyphenation
 }
 
-%%% font declaration and title settings
+\renewcommand{\texttt}[1]{%
+  \begingroup
+  \ttfamily
+  \begingroup\lccode`~=`/\lowercase{\endgroup\def~}{/\discretionary{}{}{}}%
+  \begingroup\lccode`~=`[\lowercase{\endgroup\def~}{[\discretionary{}{}{}}%
+  \begingroup\lccode`~=`.\lowercase{\endgroup\def~}{.\discretionary{}{}{}}%
+  \catcode`/=\active\catcode`[=\active\catcode`.=\active
+  \justify\scantokens{#1\noexpand}%
+  \endgroup
+}
+
+% \renewcommand{\texttt}[1]{
+%   \colorbox{bgcode}{\color{fgcode}\oldtexttt{#1}}
+% }
+
+% font declaration and title settings
 \renewcommand{\maketitlehooka}{\headingfont}
 \titleformat*{\section}{\LARGE\headingfont}
 \titleformat*{\subsection}{\Large\headingfont}
@@ -41,7 +69,6 @@
 \setlist[itemize]{nolistsep}
 \setlist[enumerate]{nolistsep}
 
-\usepackage{xcolor}
 \definecolor{blue}{RGB}{0, 114, 178}
 \definecolor{vermilion}{RGB}{213, 94, 0}
 
@@ -56,17 +83,22 @@
 }
 
 \usepackage{commath}
+\usepackage{amssymb}
+\usepackage{amsmath}
+\usepackage{mathtools}
 \newcommand{\matr}[1]{\symbfit{#1}}
+\newcommand{\defeq}{\vcentcolon=}
+\newcommand{\innerprod}[2]{\langle #1 \; , \; #2 \rangle}
 
 \usepackage{soul}
-\usepackage{todonotes}
-\newcommand\inlinecomment[3]{%
-  \textcolor{#1}{[\textbf{#2:} #3]}%
-}
+% \usepackage{todonotes}
+% \newcommand\inlinecomment[3]{%
+%   \textcolor{#1}{[\textbf{#2:} #3]}%
+% }
 \newcommand\modification[3]{%
   \textcolor{#1}{\st{#2}#3}%
-}
-\newcommand\dovydas[1]{\inlinecomment{vermilion}{Dovydas}{#1}}
+  }
+% \newcommand\dovydas[1]{\inlinecomment{vermilion}{Dovydas}{#1}}
 \newcommand\dovydasc[2]{\modification{vermilion}{#1}{#2}}
 
 \let\oldquote=\quote

@@ -125,10 +125,10 @@ export PATH="$PYENV_ROOT/bin:$PATH"
 
 # add paths
 export GOPATH="$HOME/.go"
-export PATH=/bin:/usr/local/bin:$HOME/.bin:/sbin:$GOPATH/bin:$HOME/.config/dwmblocks/scripts:$HOME/.bin/dart-sass:/usr/local/go/bin:/opt/texlive/2020/bin/x86_64-linux:/sbin/site_perl:$HOME/.local/bin:/bin/vendor_perl:$HOME/.cargo/bin
-export PATH=/opt/cuda/bin${PATH:+:${PATH}}
-export LD_LIBRARY_PATH=/opt/cuda/lib64:$LD_LIBRARY_PATH
-export LD_LIBRARY_PATH=/opt/cuda/include:$LD_LIBRARY_PATH
+export PATH=/bin:/usr/local/bin:$HOME/.bin:/sbin:$GOPATH/bin:$HOME/.config/dwmblocks/scripts:$HOME/.bin/dart-sass:/usr/local/go/bin:/opt/texlive/2020/bin/x86_64-linux:/sbin/site_perl:$HOME/.local/bin:/bin/vendor_perl:$HOME/.cargo/bin:$HOME/.cargo/target/release
+## export PATH=/opt/cuda/bin${PATH:+:${PATH}}
+## export LD_LIBRARY_PATH=/opt/cuda/lib64:$LD_LIBRARY_PATH
+## export LD_LIBRARY_PATH=/opt/cuda/include:$LD_LIBRARY_PATH
 
 [ -f ~/.fzf.bash ] && source ~/.fzf.bash
 
@@ -157,5 +157,8 @@ export https_proxy=''
 export ftp_proxy=''
 export socks_proxy=''
 
-source /usr/share/nvm/init-nvm.sh
-nvm use 17.9.0 > /dev/null 2>&1
+# source /usr/share/nvm/init-nvm.sh
+# nvm use 17.9.0 > /dev/null 2>&1
+
+export TFDS_DATA_DIR="$HOME/.tensorflow_datasets"
+export SCIKIT_LEARN_DATA="$HOME/.scikit_learn_data"
