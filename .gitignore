@@ -53,6 +53,10 @@
 !/.config/nvim/lua
 !/.config/nvim/ftplugin
 
+# Okular
+
+!/.config/okularpartrc
+
 ### PYTHON
 
 # Byte-compiled / optimized / DLL files
