@@ -12,7 +12,8 @@ output=""
 vpn_status="$(nordvpn status)"
 status_line=$(echo "$vpn_status" | grep Status)
 if [[ $status_line == *"Status: Connected"* ]]; then
-  country=$(echo "$vpn_status" | grep "Current server:" | awk '{ print toupper($3) }' | head -c 2)
+  # country=$(echo "$vpn_status" | grep "Current server:" | awk '{ print toupper($3) }' | head -c 2)
+  country=$(nordvpn status | grep "Hostname" | cut -d ":" -f 2 | cut -c2-3 | tr '[:lower:]' '[:upper:]')
   output="$output ($country)"
 else
   output="$output "

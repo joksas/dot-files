@@ -9,7 +9,7 @@ end
 
 require('packer').startup(function(use)
 	-- Package manager
-	use 'wbthomason/packer.nvim'
+use 'wbthomason/packer.nvim'
 
 	use { -- LSP Configuration & Plugins
 		'neovim/nvim-lspconfig',
@@ -37,7 +37,7 @@ require('packer').startup(function(use)
 
 	use { -- Additional text objects via treesitter
 		'nvim-treesitter/nvim-treesitter-textobjects',
-		after = 'nvim-treesitter',
+after = 'nvim-treesitter',
 	}
 
 	-- Git related plugins
@@ -45,7 +45,12 @@ require('packer').startup(function(use)
 	use 'tpope/vim-rhubarb'
 	use 'lewis6991/gitsigns.nvim'
 
-	use 'navarasu/onedark.nvim' -- Theme inspired by Atom
+
+  use 'navarasu/onedark.nvim'
+  require('onedark').setup {
+    style = 'warm'
+  }
+  require('onedark').load()
 	use 'nvim-lualine/lualine.nvim' -- Fancier statusline
 	use 'lukas-reineke/indent-blankline.nvim' -- Add indentation guides even on blank lines
 	use 'numToStr/Comment.nvim' -- "gc" to comment visual regions/lines
@@ -163,6 +168,14 @@ require('lualine').setup {
 		component_separators = '|',
 		section_separators = '',
 	},
+  sections = {
+    lualine_a = { 'mode' },
+    lualine_b = { 'diff', 'diagnostics' },
+    lualine_c = { 'filename' },
+    lualine_x = { 'filetype' },
+    lualine_y = { 'progress' },
+    lualine_z = { 'location'  },
+  },
 }
 
 -- Enable Comment.nvim
@@ -223,7 +236,7 @@ vim.keymap.set('n', '<leader>sd', require('telescope.builtin').diagnostics, { de
 -- See `:help nvim-treesitter`
 require('nvim-treesitter.configs').setup {
 	-- Add languages to be installed here that you want installed for treesitter
-	ensure_installed = { 'go', 'python', 'rust', 'html', 'markdown', 'lua', 'css', 'javascript' },
+	ensure_installed = { 'go', 'python', 'rust', 'html', 'markdown', 'lua', 'css', 'javascript', 'c' },
 
 	highlight = { enable = true },
 	indent = { enable = true },
@@ -303,6 +316,9 @@ local on_attach = function(_, bufnr)
 		end
 
 		vim.keymap.set('n', keys, func, { buffer = bufnr, desc = desc })
+
+    -- format on save
+    vim.cmd [[autocmd BufWritePre <buffer> lua vim.lsp.buf.format(nil, 100)]]
 	end
 
 	nmap('<leader>rn', vim.lsp.buf.rename, '[R]e[n]ame')
@@ -341,7 +357,7 @@ end
 require('mason').setup()
 
 -- Enable the following language servers
-local servers = { 'rust_analyzer', 'pyright' }
+local servers = { 'rust_analyzer', 'pyright', 'texlab' }
 
 -- Ensure the servers above are installed
 require('mason-lspconfig').setup {
@@ -360,6 +376,23 @@ for _, lsp in ipairs(servers) do
 end
 
 local util = require("lspconfig/util")
+
+require('lspconfig').pylsp.setup {
+  on_attach = on_attach,
+  capabilities = capabilities,
+  settings = {
+    pylsp = {
+      plugins = {
+       pycodestyle = {
+          maxLineLength = 100,
+          ignore = { "E203" },
+        },
+      },
+    },
+  },
+}
+vim.api.nvim_exec([[ autocmd BufWritePre *.py lua vim.lsp.buf.format { async = false } ]], false)
+
 
 -- custom settings for gopls
 require('lspconfig').gopls.setup {
@@ -407,7 +440,7 @@ require('lspconfig').ltex.setup {
   on_attach = on_attach,
   capabilities = capabilities,
   cmd = { "ltex-ls" },
-  filetypes = { "markdown", "text" },
+  filetypes = { "text" },
   flags = { debounce_text_changes = 300 },
 }
 

@@ -80,7 +80,7 @@ static Key keys[] = {
     { MODKEY|ShiftMask,             XK_Return, spawn,          {.v = termcmd } },
     { MODKEY|ShiftMask,             XK_r,      spawn,          SHCMD("alacritty -e bash -i -c ranger") },
     { MODKEY|ShiftMask,             XK_b,      spawn,          SHCMD("brave") },
-    { MODKEY|ShiftMask,             XK_x,      spawn,          SHCMD("i3lock") },
+    { MODKEY|ShiftMask,             XK_x,      spawn,          SHCMD("i3lock --color=ffffff --inside-color=ffffff --line-color=ffffff --separator-color=5F9EDC --ring-color=5F9EDC --keyhl-color=08498A --bshl-color=DB5461 --insidever-color=ffffff --ringver-color=ffffff --insidewrong-color=ffffff --ringwrong-color=DB5461") },
     { MODKEY,                       XK_b,      togglebar,      {0} },
     { MODKEY,                       XK_j,      focusstack,     {.i = +1 } },
     { MODKEY,                       XK_k,      focusstack,     {.i = -1 } },

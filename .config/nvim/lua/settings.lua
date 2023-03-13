@@ -15,9 +15,9 @@ vim.opt.sw = 2
 vim.opt.updatetime = 100
 
 local map = vim.api.nvim_set_keymap
-map("v", "<A-x>", '"+d', {})
-map("v", "<A-c>", '"+y', {})
-map("", "<A-v>", '"+P', {})
+map("v", "<M-x>", '"+d', {})
+map("v", "<M-c>", '"+y', {})
+map("", "<M-v>", '"+P', {})
 
 vim.opt_local.spell = true
 vim.opt_local.spelllang = "en_gb"
