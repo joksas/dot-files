@@ -236,7 +236,7 @@ vim.keymap.set('n', '<leader>sd', require('telescope.builtin').diagnostics, { de
 -- See `:help nvim-treesitter`
 require('nvim-treesitter.configs').setup {
 	-- Add languages to be installed here that you want installed for treesitter
-	ensure_installed = { 'go', 'python', 'rust', 'html', 'markdown', 'lua', 'css', 'javascript', 'c' },
+	ensure_installed = { 'go', 'python', 'rust', 'html', 'markdown', 'lua', 'css', 'javascript', 'c', 'typescript' },
 
 	highlight = { enable = true },
 	indent = { enable = true },
@@ -434,6 +434,25 @@ function OrgImports(wait_ms)
 end
 
 vim.api.nvim_exec([[ autocmd BufWritePre *.go lua OrgImports(1000) ]], false)
+
+-- Javascript/Typescript
+
+require'lspconfig'.tsserver.setup{
+  on_attach = on_attach,
+  capabilities = capabilities,
+}
+
+require'lspconfig'.eslint.setup({
+  capabilities = capabilities,
+  on_attach = function(client, bufnr)
+    vim.api.nvim_create_autocmd("BufWritePre", {
+      buffer = bufnr,
+      command = "EslintFixAll",
+    })
+  end,
+})
+
+vim.api.nvim_exec([[ autocmd BufWritePre *.ts lua vim.lsp.buf.format { async = true } ]], false)
 
 -- custom settings for ltex
 require('lspconfig').ltex.setup {
