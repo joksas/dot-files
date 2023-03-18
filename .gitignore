@@ -1,10 +1,12 @@
 /*
 
+!/.gitignore
+!/.gitattributes
+
 !/.bash_aliases
 !/.bashrc
 !/.bin
 !/.git
-!/.gitignore
 !/.xinitrc
 !/.Xresources
 
