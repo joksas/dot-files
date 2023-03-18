@@ -1,4 +1,14 @@
 #!/bin/bash
 
 export DISPLAY=":0"
-xrandr --output DP-0 --brightness 1.0 --gamma 1.0:1.0:1.0
+
+# Get connected monitors
+connected_monitors=$(xrandr --query | grep " connected" | awk '{ print $1 }')
+
+# Loop through connected monitors and set brightness and gamma
+for monitor in $connected_monitors; do
+    echo "Adjusting brightness and gamma for $monitor."
+    xrandr --output "$monitor" --brightness 1.0 --gamma 1.0:1.0:1.0
+done
+
+echo "Brightness and gamma adjustments complete."
