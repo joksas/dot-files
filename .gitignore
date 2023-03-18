@@ -51,6 +51,9 @@
 !/.config/nvim/init.lua
 !/.config/nvim/lua
 !/.config/nvim/ftplugin
+!/.config/nvim/spell
+/.config/nvim/spell/*
+!/.config/nvim/spell/*.add
 
 # Okular
 
