@@ -61,10 +61,19 @@ local plugins = {
           custom_wiki2html = "vimwiki_markdown",
         },
       }
-      vim.g.vimwiki_table_mappings = 0
       vim.api.nvim_exec([[ autocmd FileType markdown nmap <buffer><silent> <leader>p :call mdip#MarkdownClipboardImage()<CR> ]], false)
       vim.g.mdip_imgdir = ".assets"
       vim.api.nvim_exec([[ au FileType vimwiki silent! iunmap <buffer> <Tab> ]], false)
+      vim.g.vimwiki_key_mappings = {
+        all_maps = 1,
+        table_mappings = 0,
+        headers = 1,
+        table_format = 1,
+        lists = 1,
+        links = 1,
+        html = 1,
+        mouse = 0,
+      }
     end,
   },
   {
@@ -110,6 +119,9 @@ local plugins = {
             "i",
             "s",
           }),
+      },
+      completion = {
+        completeopt = "menuone,noselect",
       },
     },
   },

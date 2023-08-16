@@ -125,18 +125,18 @@ lspconfig.pyright.setup {
   filetypes = { "python" },
 }
 
-lspconfig.pylsp.setup {
-  on_attach = on_attach,
-  capabilities = capabilities,
-  settings = {
-    pylsp = {
-      plugins = {
-       pycodestyle = {
-          maxLineLength = 100,
-          ignore = { "E203" },
-        },
-      },
-    },
-  },
-}
+-- lspconfig.pylsp.setup {
+--   on_attach = on_attach,
+--   capabilities = capabilities,
+--   settings = {
+--     pylsp = {
+--       plugins = {
+--        pycodestyle = {
+--           maxLineLength = 100,
+--           ignore = { "E203" },
+--         },
+--       },
+--     },
+--   },
+-- }
 vim.api.nvim_exec([[ autocmd BufWritePre *.py lua vim.lsp.buf.format { async = false } ]], false)
