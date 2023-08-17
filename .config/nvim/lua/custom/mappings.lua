@@ -19,9 +19,23 @@ M.spellcheck = {
   },
 }
 
-M.pandoc = {
+M.utils = {
   n = {
-    ["<F5>"] = { ":!pandoc '<C-r>%' -H \"$HOME/.config/markdown-latex/base.sty\" --highlight=breezedark --pdf-engine=xelatex -V fontsize=12pt --citeproc -o '<C-r>%<backspace><backspace>pdf'<Enter>", "Pandoc: Convert to PDF" },
+    ["<F5>"] = {
+      function()
+        if vim.bo.filetype == "markdown" or vim.bo.filetype == "vimwiki" then
+          local fileName = vim.fn.expand("%:p")
+          local fileNameNoExt = vim.fn.expand("%:p:r")
+          vim.cmd("!pandoc " .. fileName .. " -H $HOME/.config/markdown-latex/base.sty --highlight=breezedark --pdf-engine=xelatex -V fontsize=12pt --citeproc -o " .. fileNameNoExt .. ".pdf")
+        elseif vim.bo.filetype == "bib" then
+          local fileName = vim.fn.expand("%:p")
+          vim.cmd("!biber --tool --output-indent=2 --output-align --output-fieldcase=lower --output-format=bibtex --nolog --output-file=" .. fileName .. " " .. fileName)
+          vim.cmd(":e")
+        else
+          vim.cmd("echo 'No operation for filetype `" .. vim.bo.filetype .. "`'")
+        end
+      end,
+    },
   },
 }
 
