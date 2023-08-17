@@ -7,8 +7,8 @@ static const unsigned int gappx    = 7;        /* gap pixel between windows */
 static const unsigned int snap     = 32;       /* snap pixel */
 static const int showbar           = 1;        /* 0 means no bar */
 static const int topbar            = 1;        /* 0 means bottom bar */
-static const char *fonts[]         = {"Iosevka:size=14", "FontAwesome6Brands:size=14:antialias:true", "FontAwesome6Free:size=14:antialias:true", "FontAwesome6Free:style=Solid:size=14:antialias:true"};
-static const char dmenufont[]      = "Iosevka:size=14";
+static const char *fonts[]         = {"IosevkaNerdFont:size=14", "FontAwesome6Brands:size=14:antialias:true", "FontAwesome6Free:size=14:antialias:true", "FontAwesome6Free:style=Solid:size=14:antialias:true"};
+static const char dmenufont[]      = "IosevkaNerdFont:size=14";
 static const char col_gray1[]      = "#222222";
 static const char col_gray2[]      = "#444444";
 static const char col_gray3[]      = "#bbbbbb";

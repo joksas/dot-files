@@ -41,7 +41,7 @@ local plugins = {
   },
   {
     "github/copilot.vim",
-    ft = {"rust", "lua", "markdown", "vimwiki", "toml", "text", "tex", "latex", "typescript", "javascript", "html", "css", "python", "go"},
+    ft = {"rust", "lua", "markdown", "vimwiki", "toml", "text", "tex", "latex", "typescript", "javascript", "html", "css", "python", "go", "sql", "dockerfile" },
     init = function()
       vim.g.copilot_node_command = "~/.nvm/versions/node/v17.9.0/bin/node"
       vim.g.copilot_assume_mapped = true
@@ -49,7 +49,8 @@ local plugins = {
   },
   {
     "vimwiki/vimwiki",
-    lazy = false,
+    branch = "dev",
+    ft = "markdown",
     init = function()
       vim.g.vimwiki_list = {
         {
@@ -112,6 +113,14 @@ local plugins = {
           }),
       },
     },
+  },
+  {
+    "folke/trouble.nvim",
+    dependencies = { "nvim-tree/nvim-web-devicons" },
+    ft = { "rust", "lua", "markdown", "vimwiki", "toml", "text", "tex", "latex", "typescript", "javascript", "html", "css", "python", "go", "sql", "dockerfile" },
+    opts = {
+      cycle_results = false,
+    }
   },
 }
 

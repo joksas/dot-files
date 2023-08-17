@@ -24,5 +24,8 @@ picom --fade-in-step=0.04 --fade-out-step=0.04 &
 # Status bar
 dwmblocks &
 
+# Notifications
+dunst &
+
 # Launch dwm
 exec dwm

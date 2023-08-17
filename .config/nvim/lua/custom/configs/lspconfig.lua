@@ -16,6 +16,7 @@ local on_attach = function(_, bufnr)
 
 	nmap('<leader>rn', vim.lsp.buf.rename, '[R]e[n]ame')
 	nmap('<leader>ca', vim.lsp.buf.code_action, '[C]ode [A]ction')
+	nmap('<leader>ws', vim.lsp.buf.workspace_symbol, '[W]orkspace [S]ymbol')
 	nmap('gd', vim.lsp.buf.definition, '[G]oto [D]efinition')
 	nmap('gr', require('telescope.builtin').lsp_references, '[G]oto [R]eferences')
 	nmap('<leader>D', vim.lsp.buf.type_definition, 'Type [D]efinition')
@@ -42,7 +43,7 @@ lspconfig.gopls.setup {
   on_attach = on_attach,
   capabilities = capabilities,
   cmd = { "gopls", "serve" },
-  filetypes = { "go", "gomod" },
+  filetypes = { "go", "gomod", "html" },
   root_dir = util.root_pattern("go.work", "go.mod", ".git"),
   settings = {
     gopls = {
@@ -138,5 +139,23 @@ lspconfig.pylsp.setup {
       },
     },
   },
+}
+
+lspconfig.efm.setup {
+    on_attach = on_attach,
+    flags = {
+      debounce_text_changes = 150,
+    },
+    init_options = {documentFormatting = true},
+    filetypes = {"python"},
+    settings = {
+        rootMarkers = {".git/"},
+        languages = {
+            python = {
+                {formatCommand = "isort --quiet -", formatStdin = true},
+                {formatCommand = "black --quiet -", formatStdin = true},
+            }
+        }
+    }
 }
 vim.api.nvim_exec([[ autocmd BufWritePre *.py lua vim.lsp.buf.format { async = false } ]], false)
